@@ -1,7 +1,7 @@
 # JpetStoreV1
 
 ## Java Web with Maven
-a Java Web Porject only with maven but any other framework for beginer.
+a Java Web Project only with maven but any other framework for beginner.
 
 ### FrameWork
 - only Maven
