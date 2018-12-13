@@ -39,6 +39,9 @@ public class Order implements Serializable {
     private String status;
     private List<LineItem> lineItems = new ArrayList<LineItem>();
 
+    private boolean confirmed = false;
+    private boolean shippingAddressRequired = false;
+
     public int getOrderId() {
         return orderId;
     }
@@ -304,4 +307,19 @@ public class Order implements Serializable {
         lineItems.add(lineItem);
     }
 
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+    public boolean isShippingAddressRequired() {
+        return shippingAddressRequired;
+    }
+
+    public void setShippingAddressRequired(boolean shippingAddressRequired) {
+        this.shippingAddressRequired = shippingAddressRequired;
+    }
 }

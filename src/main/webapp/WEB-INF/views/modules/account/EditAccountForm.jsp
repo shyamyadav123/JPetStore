@@ -31,18 +31,18 @@
         <table>
             <tr>
                 <td>User ID:</td>
-                <td>${account.userId}</td>
+                <td><input type="text" readonly="readonly" value="${account.userId}"></td>
             </tr>
             <tr>
                 <td>New password:</td>
-                <td><input type="text" name="password" /></td>
+                <td><input type="text" name="account.password" /></td>
             </tr>
             <tr>
                 <td>Repeat password:</td>
                 <td><input type="text" name="repeatedPassword"/></td>
             </tr>
         </table>
-        <%@ include file="IncludeAccountwFields.jsp" %>
+        <%@ include file="IncludeAccountFields.jsp" %>
         <input type="submit" name="editAccount" value="Save Account Information"/>
     </form>
 

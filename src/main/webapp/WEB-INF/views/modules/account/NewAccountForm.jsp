@@ -28,11 +28,11 @@
         <table>
             <tr>
                 <td>User ID:</td>
-                <td><input type="text" name="username"/></td>
+                <td><input type="text" name="account.userId"/></td>
             </tr>
             <tr>
                 <td>New password:</td>
-                <td><input type="text" name="password"/></td>
+                <td><input type="text" name="account.password"/></td>
             </tr>
             <tr>
                 <td>Repeat password:</td>

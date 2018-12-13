@@ -49,7 +49,7 @@
 			<%--<stripes:param name="workingItemId" value="${requestScope.item.itemId}" />--%>
 			<%--Add to Cart--%>
 			<%--</stripes:link>--%>
-			<a href="${ctx}/catalog/addItemToCart?workingItemId=${requestScope.item.itemId}">Add to Cart</a>
+			<a href="${ctx}/cart/addItemToCart?workingItemId=${requestScope.item.itemId}">Add to Cart</a>
 		</td>
 	</tr>
 </table>
