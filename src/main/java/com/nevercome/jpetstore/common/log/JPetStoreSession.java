@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * sun
  * clickstream in doc is equal to jPetStoreList
  */
-public class JPetStore implements Serializable {
+public class JPetStoreSession implements Serializable {
     private static final long serialVersionUID = 1;
 
     /** The stream itself: a list of click events. */
