@@ -28,18 +28,18 @@ public class NewOrderServlet extends HttpServlet {
     private Order order = new Order();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        order.setCardType(request.getParameter("cardType"));
-        order.setBillAddress1(request.getParameter("billAddress1"));
-        order.setBillAddress2(request.getParameter("billAddress2"));
-        order.setBillCity(request.getParameter("billCity"));
-        order.setBillCountry(request.getParameter("billCountry"));
-        order.setBillState(request.getParameter("billState"));
-        order.setBillToFirstName(request.getParameter("billToFirstName"));
-        order.setBillToLastName(request.getParameter("billToLastName"));
-        order.setBillZip(request.getParameter("billZip"));
-        order.setCourier(request.getParameter("courier"));
-        order.setCreditCard(request.getParameter("creditCard"));
-        order.setExpiryDate(request.getParameter("expiryDate"));
+        order.setCardType(request.getParameter("order.cardType"));
+        order.setBillAddress1(request.getParameter("order.billAddress1"));
+        order.setBillAddress2(request.getParameter("order.billAddress2"));
+        order.setBillCity(request.getParameter("order.billCity"));
+        order.setBillCountry(request.getParameter("order.billCountry"));
+        order.setBillState(request.getParameter("order.billState"));
+        order.setBillToFirstName(request.getParameter("order.billToFirstName"));
+        order.setBillToLastName(request.getParameter("order.billToLastName"));
+        order.setBillZip(request.getParameter("order.billZip"));
+        order.setCourier(request.getParameter("order.courier"));
+        order.setCreditCard(request.getParameter("order.creditCard"));
+        order.setExpiryDate(request.getParameter("order.expiryDate"));
         if (StringUtils.isNotBlank(request.getParameter("shippingAddressRequired"))) {
             order.setShippingAddressRequired(true);
         }
@@ -49,9 +49,11 @@ public class NewOrderServlet extends HttpServlet {
         if (order.isShippingAddressRequired()) {
             request.getRequestDispatcher(SHIPPING).forward(request, response);
         } else if (!order.isConfirmed()) {
+            request.setAttribute("order", order);
             request.getRequestDispatcher(CONFIRM_ORDER).forward(request, response);
         } else {
             Account account =(Account) request.getSession().getAttribute("account");
+            request.setAttribute("order", order);
             order.setUsername(account.getUserId());
             orderService.insertOrder(order);
             request.getSession().setAttribute("cart", null);

@@ -24,7 +24,7 @@ public class RemoveItemFromCartServlet extends HttpServlet {
     private String workingItemId;
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        workingItemId = request.getParameter("workingItemId");
+        workingItemId = request.getParameter("cartItem");
         cart = (Cart) request.getSession().getAttribute("cart");
         if (cart == null) {
             cart = new Cart();

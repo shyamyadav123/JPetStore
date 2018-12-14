@@ -6,6 +6,7 @@ import com.nevercome.jpetstore.service.AccountService;
 import com.nevercome.jpetstore.service.CatalogService;
 import com.nevercome.jpetstore.service.impl.AccountServiceImpl;
 import com.nevercome.jpetstore.service.impl.CatalogServiceImpl;
+import com.nevercome.jpetstore.utils.VerifyCode;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,28 +27,37 @@ public class SignInServlet extends HttpServlet {
     private Account account;
     private List<Product> myList;
 
-//    这样子的bean入参...需要自己去写反射啊...我又..
+    //    这样子的bean入参...需要自己去写反射啊...我又..
 //    一定要去学习一下反射
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        System.out.println("post in");
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
-        account = accountService.getAccount(userId, password);
-        if (account == null) {
-            String value = "Invalid username or password.  SignIn failed.";
+        String userCode = request.getParameter("verifyCode");
+        HttpSession session = request.getSession();
+        StringBuffer codeBuffer = (StringBuffer) session.getAttribute("code");
+        if (VerifyCode.checkVerify(userCode, codeBuffer.toString())) {
+            account = accountService.getAccount(userId, password);
+            if (account == null) {
+                String value = "Invalid username or password.  SignIn failed.";
+                request.setAttribute("message", value);
+                request.getRequestDispatcher(SIGNIN).forward(request, response);
+            } else {
+                account.setPassword(null);
+//            System.out.println("post in");
+                myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+                account.setAuthenticated(true);
+                session.setAttribute("account", account);
+                session.setAttribute("myList", myList);
+                String redirect = request.getContextPath() + "/main";
+                response.sendRedirect(redirect);
+            }
+        } else {
+            String value = "Wrong verification code. Please try again";
             request.setAttribute("message", value);
             request.getRequestDispatcher(SIGNIN).forward(request, response);
-        } else {
-            account.setPassword(null);
-//            System.out.println("post in");
-            myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
-            account.setAuthenticated(true);
-            HttpSession session = request.getSession();
-            session.setAttribute("account", account);
-            session.setAttribute("myList", myList);
-            String redirect = request.getContextPath() + "/main";
-            response.sendRedirect(redirect);
         }
+
 //        doGet(request, response);
     }
 

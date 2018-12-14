@@ -15,7 +15,7 @@
         <h2>Shopping Cart</h2>
         <%--<stripes:form--%>
         <%--beanclass="org.mybatis.jpetstore.web.actions.CartActionBean">--%>
-        <form action="${ctx}/cart" method="post">
+        <form action="${ctx}/cart/updateCartQuantities" method="post">
             <table>
                 <tr>
                     <th><b>Item ID</b></th>
@@ -66,7 +66,7 @@
                                 <%--<stripes:param name="cartItem" value="${cartItem.item.itemId}"/>--%>
                                 <%--Remove--%>
                                 <%--</stripes:link>--%>
-                            <a href="${ctx}/cart/removeItemFromCart?cartItem=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
+                            <a href="${ctx}/cart/removeItemFromCart?cartItem=${cartItem.item.itemId}">Remove</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -74,7 +74,7 @@
                     <td colspan="7">Sub Total:
                         <fmt:formatNumber
                                 value="${sessionScope.cart.subTotal}" pattern="$#,##0.00"/>
-                        <input type="submit" name="updateCartQuantities" value="Update Cart"/>
+                        <input type="submit" value="Update Cart"/>
                     </td>
                     <td>&nbsp;</td>
                 </tr>

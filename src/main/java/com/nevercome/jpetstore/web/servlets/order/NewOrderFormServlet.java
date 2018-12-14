@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet("/order/newOrderForm")
@@ -27,13 +29,26 @@ public class NewOrderFormServlet extends HttpServlet {
 
     private Order order = new Order();
 
+    private static final List<String> CARD_TYPE_LIST;
+
+    static {
+        List<String> cardList = new ArrayList<String>();
+        cardList.add("Visa");
+        cardList.add("MasterCard");
+        cardList.add("American Express");
+        CARD_TYPE_LIST = Collections.unmodifiableList(cardList);
+    }
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String message = "";
         HttpSession session = request.getSession();
+        if(session.getAttribute("creditCardTypes") == null) {
+            session.setAttribute("creditCardTypes", CARD_TYPE_LIST);
+        }
+        String message = "";
         Account account = (Account) session.getAttribute("account");
         Cart cart = (Cart) session.getAttribute("cart");
         if (account == null || !account.isAuthenticated()) {

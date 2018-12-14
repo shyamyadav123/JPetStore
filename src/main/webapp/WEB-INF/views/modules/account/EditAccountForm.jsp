@@ -26,12 +26,12 @@
     <%--<stripes:submit name="editAccount" value="Save Account Information"/>--%>
     <%--</stripes:form>--%>
 
-    <form action="${ctx}/account" onfocus="">
+    <form action="${ctx}/account/editAccount">
         <h3>User Information</h3>
         <table>
             <tr>
                 <td>User ID:</td>
-                <td><input type="text" readonly="readonly" value="${account.userId}"></td>
+                <td><input type="text" readonly="readonly" value="${sessionScope.account.userId}"></td>
             </tr>
             <tr>
                 <td>New password:</td>
@@ -43,7 +43,7 @@
             </tr>
         </table>
         <%@ include file="IncludeAccountFields.jsp" %>
-        <input type="submit" name="editAccount" value="Save Account Information"/>
+        <input type="submit" value="Save Account Information"/>
     </form>
 
     <%--<stripes:link--%>

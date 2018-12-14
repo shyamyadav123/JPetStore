@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/account/signInForm")
-public class SingInFormServlet extends HttpServlet {
+public class SignInFormServlet extends HttpServlet {
 
     private static final String SIGNIN = "/WEB-INF/views/modules/account/SignInForm.jsp";
 

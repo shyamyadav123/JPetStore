@@ -3,6 +3,12 @@
 
 <jsp:useBean id="account" class="com.nevercome.jpetstore.domain.model.Account"/>
 
+<script type="text/javascript">
+    function change() {
+
+    }
+</script>
+
 <div id="Catalog">
     <%--<stripes:form beanclass="org.mybatis.jpetstore.web.actions.AccountActionBean" focus="">--%>
     <%--<h3>User Information</h3>--%>
@@ -37,6 +43,14 @@
             <tr>
                 <td>Repeat password:</td>
                 <td><input type="text" name="repeatedPassword"/></td>
+            </tr>
+            <tr>
+                <td>VerifyCode:</td>
+                <td><input type="text" name="verifyCode"></td>
+            </tr>
+            <tr>
+                <td><img src="${ctx}/account/verify"></td>
+                <td><a href="#" onclick="change()">Change Another</a></td>
             </tr>
         </table>
         <%@ include file="IncludeAccountFields.jsp" %>

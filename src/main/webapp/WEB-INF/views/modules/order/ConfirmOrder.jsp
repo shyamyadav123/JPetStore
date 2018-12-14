@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/views/modules/common/IncludeTop.jsp" %>
 
+<jsp:useBean id="order" class="com.nevercome.jpetstore.domain.model.Order" />
+
 <div id="BackLink">
     <%--<stripes:link--%>
     <%--beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">--%>

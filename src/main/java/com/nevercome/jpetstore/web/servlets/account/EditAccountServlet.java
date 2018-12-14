@@ -56,7 +56,8 @@ public class EditAccountServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("account", account);
         session.setAttribute("myList", myList);
-        response.sendRedirect("/main");
+        String redirect = request.getContextPath() + "/main";
+        response.sendRedirect(redirect);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
