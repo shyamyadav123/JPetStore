@@ -53,4 +53,14 @@ public class CartItem implements Serializable {
             total = null;
         }
     }
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "item=" + item +
+                ", quantity=" + quantity +
+                ", inStock=" + inStock +
+                ", total=" + total +
+                '}';
+    }
 }

@@ -186,4 +186,30 @@ public class Account implements Serializable {
     public void setAuthenticated(boolean authenticated) {
         this.authenticated = authenticated;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "userId='" + userId + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", status='" + status + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                ", country='" + country + '\'' +
+                ", phone='" + phone + '\'' +
+                ", favouriteCategoryId='" + favouriteCategoryId + '\'' +
+                ", languagePreference='" + languagePreference + '\'' +
+                ", listOption=" + listOption +
+                ", bannerOption=" + bannerOption +
+                ", bannerName='" + bannerName + '\'' +
+                ", authenticated=" + authenticated +
+                '}';
+    }
 }

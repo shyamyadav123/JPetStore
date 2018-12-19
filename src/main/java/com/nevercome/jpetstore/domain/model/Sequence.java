@@ -31,4 +31,12 @@ public class Sequence implements Serializable {
     public void setNextId(int nextId) {
         this.nextId = nextId;
     }
+
+    @Override
+    public String toString() {
+        return "Sequence{" +
+                "name='" + name + '\'' +
+                ", nextId=" + nextId +
+                '}';
+    }
 }

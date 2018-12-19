@@ -163,4 +163,18 @@ public class JPetStoreSession implements Serializable {
     public List<JPetStoreRequest> getStream() {
         return jPetStoreRequestList;
     }
+
+    @Override
+    public String toString() {
+        return "JPetStoreSession{" +
+                "jPetStoreRequestList=" + jPetStoreRequestList +
+                ", attributes=" + attributes +
+                ", hostname='" + hostname + '\'' +
+                ", initialReferrer='" + initialReferrer + '\'' +
+                ", start=" + start +
+                ", lastRequest=" + lastRequest +
+                ", bot=" + bot +
+                ", session=" + session +
+                '}';
+    }
 }

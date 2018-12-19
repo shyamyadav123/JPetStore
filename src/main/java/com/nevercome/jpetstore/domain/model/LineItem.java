@@ -87,4 +87,17 @@ public class LineItem implements Serializable {
             total = null;
         }
     }
+
+    @Override
+    public String toString() {
+        return "LineItem{" +
+                "orderId=" + orderId +
+                ", lineNumber=" + lineNumber +
+                ", quantity=" + quantity +
+                ", itemId='" + itemId + '\'' +
+                ", unitPrice=" + unitPrice +
+                ", item=" + item +
+                ", total=" + total +
+                '}';
+    }
 }

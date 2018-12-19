@@ -124,4 +124,23 @@ public class Item implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemId='" + itemId + '\'' +
+                ", productId='" + productId + '\'' +
+                ", listPrice=" + listPrice +
+                ", unitCost=" + unitCost +
+                ", supplierId=" + supplierId +
+                ", status='" + status + '\'' +
+                ", attribute1='" + attribute1 + '\'' +
+                ", attribute2='" + attribute2 + '\'' +
+                ", attribute3='" + attribute3 + '\'' +
+                ", attribute4='" + attribute4 + '\'' +
+                ", attribute5='" + attribute5 + '\'' +
+                ", quantity=" + quantity +
+                ", product=" + product +
+                '}';
+    }
 }

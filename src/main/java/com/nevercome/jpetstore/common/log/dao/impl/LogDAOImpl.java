@@ -54,9 +54,8 @@ public class LogDAOImpl implements LogDAO {
                 valMap.put("attribute", thisAttr);
                 valMap.put("value", object.toString());
                 valMap.put("sid", jPetStoreSession.getSession().getId());
-                int count = DBUtil.insert("request_list", valMap);
+                int count = DBUtil.insert("session_attribute", valMap);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,7 +70,7 @@ public class LogDAOImpl implements LogDAO {
                 valMap.put("ip", jPetStoreSession.getHostname());
                 valMap.put("uri", request.toString());
                 valMap.put("query", request.getQueryString());
-                valMap.put("timestamp", request.getTimestamp());
+//                valMap.put("timestamp", request.getTimestamp());
                 valMap.put("sid", jPetStoreSession.getSession().getId());
                 int count = DBUtil.insert("request_list", valMap);
             }
