@@ -14,11 +14,9 @@
 <div id="Catalog">
 
 <table>
-	<tr>
-		<td>${requestScope.product.description}</td>
+	<tr><td>${requestScope.product.description}</td>
 	</tr>
-	<tr>
-		<td><b> ${requestScope.item.itemId} </b></td>
+	<tr><td><b> ${requestScope.item.itemId} </b></td>
 	</tr>
 	<tr>
 		<td><b><font size="4"> ${requestScope.item.attribute1}
@@ -36,20 +34,9 @@
       	${requestScope.item.quantity} in stock.
 	  </c:if></td>
 	</tr>
-	<tr>
-		<td><fmt:formatNumber value="${requestScope.item.listPrice}"
-			pattern="$#,##0.00" /></td>
-	</tr>
-
-	<tr>
-		<td>
-			<%--<stripes:link class="Button"--%>
-			<%--beanclass="org.mybatis.jpetstore.web.actions.CartActionBean"--%>
-			<%--event="addItemToCart">--%>
-			<%--<stripes:param name="workingItemId" value="${requestScope.item.itemId}" />--%>
-			<%--Add to Cart--%>
-			<%--</stripes:link>--%>
-			<a href="${ctx}/cart/addItemToCart?workingItemId=${requestScope.item.itemId}">Add to Cart</a>
+	<tr><td><fmt:formatNumber value="${requestScope.item.listPrice}"
+			pattern="$#,##0.00" /></td></tr>
+	<tr><td><a href="${ctx}/cart/addItemToCart?workingItemId=${requestScope.item.itemId}">Add to Cart</a>
 		</td>
 	</tr>
 </table>

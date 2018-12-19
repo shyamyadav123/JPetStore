@@ -64,7 +64,7 @@ public class JPetStoreListener implements ServletContextListener, HttpSessionLis
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
         final HttpSession session = httpSessionEvent.getSession();
-        session.setMaxInactiveInterval(15);
+//        session.setMaxInactiveInterval(15);
         logger.info("Session " + session.getId() + " was created, adding a new jpetstore.");
         Object attrValue = session.getAttribute(SESSION_ATTRIBUTE_KEY);
         if (attrValue != null) {

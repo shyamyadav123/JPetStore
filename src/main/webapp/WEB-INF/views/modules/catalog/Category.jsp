@@ -11,7 +11,6 @@
 <div id="Catalog">
 
     <h2>${requestScope.category.name}</h2>
-
     <table>
         <tr>
             <th>Product ID</th>
@@ -32,7 +31,6 @@
             </tr>
         </c:forEach>
     </table>
-
 </div>
 
 <%@ include file="/WEB-INF/views/modules/common/IncludeBottom.jsp" %>

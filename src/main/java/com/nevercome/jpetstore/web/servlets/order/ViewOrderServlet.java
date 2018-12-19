@@ -38,6 +38,7 @@ public class ViewOrderServlet extends HttpServlet {
         Account account = (Account) session.getAttribute("account");
 
         if (account.getUserId().equals(order.getUsername())) {
+            request.setAttribute("order", order);
             request.getRequestDispatcher(VIEW_ORDER).forward(request, response);
         } else {
             order = null;

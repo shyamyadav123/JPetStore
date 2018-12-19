@@ -32,11 +32,8 @@
         <input type="submit" value="Login"/>
     </form>
     Need a user name and password?
-    <%--<stripes:link--%>
-    <%--beanclass="org.mybatis.jpetstore.web.actions.AccountActionBean"--%>
-    <%--event="newAccountForm">Register Now!--%>
-    <%--</stripes:link>--%>
     <a href="${ctx}/account/newAccountForm">Register Now!</a>
+
 </div>
 
 <%@ include file="/WEB-INF/views/modules/common/IncludeBottom.jsp" %>

@@ -125,7 +125,7 @@ public class OrderDAOImpl implements OrderDAO {
         valMap.put(Global.COL_ORDER_SHIPTOFIRSTNAME, order.getShipToFirstName());
         valMap.put(Global.COL_ORDER_SHIPTOLASTNAME, order.getShipToLastName());
         valMap.put(Global.COL_ORDER_SHIPZIP, order.getShipZip());
-        valMap.put(Global.COL_ORDER_STATUS, order.getStatus());
+//        valMap.put(Global.COL_ORDER_STATUS, order.getStatus());
         valMap.put(Global.COL_ORDER_TOTALPRICE, order.getTotalPrice());
         valMap.put(Global.COL_ORDER_USERNAME, order.getUsername());
         try {
@@ -138,7 +138,7 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public void insertOrderStatus(Order order) {
         Map<String, Object> valMap = new HashMap<>();
-        valMap.put(Global.COL_ORDERSTATUS_STATUS, order.getStatus());
+        valMap.put(Global.COL_ORDERSTATUS_STATUS, "1");
         valMap.put(Global.COL_ORDERSTATUS_ORDERID, order.getOrderId());
         valMap.put(Global.COL_ORDERSTATUS_LINENUM, order.getLineItems().size());
         Timestamp timestamp = new Timestamp(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, Calendar.HOUR_OF_DAY, Calendar.MINUTE, Calendar.SECOND, 1);

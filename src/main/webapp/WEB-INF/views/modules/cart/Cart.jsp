@@ -13,8 +13,6 @@
     <div id="Cart">
 
         <h2>Shopping Cart</h2>
-        <%--<stripes:form--%>
-        <%--beanclass="org.mybatis.jpetstore.web.actions.CartActionBean">--%>
         <form action="${ctx}/cart/updateCartQuantities" method="post">
             <table>
                 <tr>
@@ -39,12 +37,6 @@
                 <%--<c:forEach var="cartItem" items="${sessionScope.cart.cartItemList}">--%>
                     <tr>
                         <td>
-                                <%--<stripes:link--%>
-                                <%--beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean"--%>
-                                <%--event="viewItem">--%>
-                                <%--<stripes:param name="itemId" value="${cartItem.item.itemId}"/>--%>
-                                <%--${cartItem.item.itemId}--%>
-                                <%--</stripes:link>--%>
                             <a href="${ctx}/catalog/viewItem?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
                         </td>
                         <td>${cartItem.item.product.productId}</td>

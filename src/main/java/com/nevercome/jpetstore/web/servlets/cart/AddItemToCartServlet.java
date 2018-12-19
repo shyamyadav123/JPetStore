@@ -24,9 +24,7 @@ public class AddItemToCartServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         workingItemId = request.getParameter("workingItemId");
-//        System.out.println(workingItemId+"#");
         cart = (Cart) request.getSession().getAttribute("cart");
-//        System.out.println(workingItemId+"##");
         if (cart == null) {
             cart = new Cart();
         }
@@ -37,9 +35,7 @@ public class AddItemToCartServlet extends HttpServlet {
             Item item = catalogService.getItem(workingItemId);
             cart.addItem(item, isInStock);
         }
-//        System.out.println(workingItemId+"###");
         request.getSession().setAttribute("cart", cart);
-//        System.out.println(workingItemId+"####");
         request.getRequestDispatcher(VIEW_CART).forward(request, response);
     }
 

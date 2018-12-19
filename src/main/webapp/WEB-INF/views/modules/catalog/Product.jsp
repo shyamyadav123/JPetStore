@@ -16,7 +16,6 @@
 <div id="Catalog">
 
 <h2>${requestScope.product.name}</h2>
-
 <table>
 	<tr>
 		<th>Item ID</th>
@@ -28,12 +27,6 @@
 	<c:forEach var="item" items="${requestScope.itemList}">
 		<tr>
 			<td>
-				<%--<stripes:link--%>
-					<%--beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean"--%>
-					<%--event="viewItem">--%>
-					<%--<stripes:param name="itemId" value="${item.itemId}" />--%>
-					<%--${item.itemId}--%>
-					<%--</stripes:link>--%>
 				<a href="${ctx}/catalog/viewItem?itemId=${item.itemId}">${item.itemId}</a>
 			</td>
 			<td>${item.product.productId}</td>
@@ -42,22 +35,11 @@
 			<td><fmt:formatNumber value="${item.listPrice}"
 				pattern="$#,##0.00" /></td>
 			<td>
-				<%--<stripes:link class="Button"--%>
-					<%--beanclass="org.mybatis.jpetstore.web.actions.CartActionBean"--%>
-					<%--event="addItemToCart">--%>
-					<%--<stripes:param name="workingItemId" value="${item.itemId}" />--%>
-					<%--Add to Cart--%>
-					<%--</stripes:link>--%>
 				<a href="${ctx}/cart/addItemToCart?workingItemId=${item.itemId}">Add to Cart</a>
 			</td>
 		</tr>
 	</c:forEach>
-	<tr>
-		<td>
-		</td>
-	</tr>
 </table>
-
 </div>
 
 <%@ include file="/WEB-INF/views/modules/common/IncludeBottom.jsp" %>

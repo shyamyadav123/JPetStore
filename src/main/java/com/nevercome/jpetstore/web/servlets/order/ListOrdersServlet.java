@@ -31,9 +31,10 @@ public class ListOrdersServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Account account = (Account)session.getAttribute("account");
-        if(account != null) {
+        Account account = (Account) session.getAttribute("account");
+        if (account != null) {
             orderList = orderService.getOrdersByUserId(account.getUserId());
+            request.setAttribute("orderList", orderList);
             request.getRequestDispatcher(VIEW_ORDER).forward(request, response);
         }
     }

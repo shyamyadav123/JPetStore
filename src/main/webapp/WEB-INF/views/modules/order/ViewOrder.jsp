@@ -106,7 +106,7 @@
         </tr>
         <tr>
             <td>Courier:</td>
-            <td><c:out value="${requestScope.order.courier}"/></td>
+            <td><c:out value="${requestScope.order.courier}" /></td>
         </tr>
         <tr>
             <td colspan="2">Status: <c:out value="${requestScope.order.status}"/></td>
@@ -151,8 +151,7 @@
                         </tr>
                     </c:forEach>
                     <tr>
-                        <th colspan="5">Total: <fmt:formatNumber
-                                value="${requestScope.order.totalPrice}" pattern="$#,##0.00"/></th>
+                        <th colspan="5">Total: <fmt:formatNumber value="${requestScope.order.totalPrice}" pattern="$#,##0.00"/></th>
                     </tr>
                 </table>
             </td>

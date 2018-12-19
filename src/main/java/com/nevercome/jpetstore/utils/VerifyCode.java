@@ -87,8 +87,6 @@ public class VerifyCode {
          */
         public static boolean checkVerify(String verifyCode,Object correctCode){
                 verifyCode = verifyCode.toUpperCase();
-//                System.out.println(verifyCode);
-//                System.out.println(correctCode);
                 return verifyCode.equals(correctCode);
         }
 }

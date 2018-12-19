@@ -30,7 +30,6 @@ public class SignInServlet extends HttpServlet {
     //    这样子的bean入参...需要自己去写反射啊...我又..
 //    一定要去学习一下反射
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        System.out.println("post in");
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
         String userCode = request.getParameter("verifyCode");
@@ -44,10 +43,10 @@ public class SignInServlet extends HttpServlet {
                 request.getRequestDispatcher(SIGNIN).forward(request, response);
             } else {
                 account.setPassword(null);
-//            System.out.println("post in");
                 myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
                 account.setAuthenticated(true);
                 session.setAttribute("account", account);
+//                System.err.println(session.getAttribute("account"));
                 session.setAttribute("myList", myList);
                 String redirect = request.getContextPath() + "/main";
                 response.sendRedirect(redirect);
@@ -57,8 +56,6 @@ public class SignInServlet extends HttpServlet {
             request.setAttribute("message", value);
             request.getRequestDispatcher(SIGNIN).forward(request, response);
         }
-
-//        doGet(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -19,21 +19,9 @@
         <c:forEach var="product" items="${requestScope.productList}">
             <tr>
                 <td>
-                        <%--<stripes:link--%>
-                        <%--beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean"--%>
-                        <%--event="viewProduct">--%>
-                        <%--<stripes:param name="productId" value="${product.productId}" />--%>
-                        <%--${product.description}--%>
-                        <%--</stripes:link>--%>
                     <a href="${ctx}/catalog/viewProduct?productId=${product.productId}">${product.description}</a>
                 </td>
                 <td>
-                        <%--<b> <stripes:link--%>
-                        <%--beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean"--%>
-                        <%--event="viewProduct">--%>
-                        <%--<stripes:param name="productId" value="${product.productId}"/>--%>
-                        <%--<font color="BLACK"> ${product.productId} </font>--%>
-                        <%--</stripes:link> </b>--%>
                     <b>
                         <a href="${ctx}/catalog/viewProduct?productId=${product.productId}">
                             <font color="BLACK"> ${product.productId} </font></a>
@@ -45,7 +33,6 @@
         <tr>
             <td></td>
         </tr>
-
     </table>
 
 </div>

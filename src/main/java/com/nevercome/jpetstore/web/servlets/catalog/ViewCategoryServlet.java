@@ -33,7 +33,6 @@ public class ViewCategoryServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
-//        System.out.println(request.getHeaders("in"));
         categoryId = request.getParameter("categoryId");
         if(StringUtils.isNoneBlank(categoryId)) {
             productList = catalogService.getProductListByCategory(categoryId);
@@ -41,7 +40,6 @@ public class ViewCategoryServlet extends HttpServlet {
         }
         request.setAttribute("productList", productList);
         request.setAttribute("category", category);
-//        System.out.println(request.getHeaders("out"));
         request.getRequestDispatcher(VIEW_CATEGORY).forward(request, response);
     }
 

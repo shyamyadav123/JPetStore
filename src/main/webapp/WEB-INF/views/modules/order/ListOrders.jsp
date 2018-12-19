@@ -13,12 +13,6 @@
 	<c:forEach var="order" items="${requestScope.orderList}">
 		<tr>
 			<td>
-				<%--<stripes:link--%>
-					<%--beanclass="org.mybatis.jpetstore.web.actions.OrderActionBean"--%>
-					<%--event="viewOrder">--%>
-					<%--<stripes:param name="orderId" value="${order.orderId}" />--%>
-					<%--${order.orderId}--%>
-					<%--</stripes:link>--%>
 				<a href="${ctx}/order/viewOrder?${order.orderId}">${order.orderId}</a>
 			</td>
 			<td><fmt:formatDate value="${order.orderDate}"

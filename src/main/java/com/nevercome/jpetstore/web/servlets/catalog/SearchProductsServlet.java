@@ -33,14 +33,21 @@ public class SearchProductsServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         keyword = request.getParameter("keyword");
-        if (StringUtils.isNoneBlank(keyword)) {
+        if (StringUtils.isBlank(keyword)) {
             request.setAttribute("message", "Please enter a keyword to search for, then press the search button.");
             request.setAttribute("productList", null);
             request.getRequestDispatcher(ERROR).forward(request, response);
         } else {
             productList = catalogService.searchProductList(keyword.toLowerCase());
-            request.setAttribute("productList", productList);
-            request.getRequestDispatcher(SEARCH_PRODUCTS).forward(request, response);
+            if(productList != null && productList.size() > 0) {
+                request.setAttribute("productList", productList);
+                request.getRequestDispatcher(SEARCH_PRODUCTS).forward(request, response);
+            } else {
+                request.setAttribute("message", "Sorry, the result is null, please check your input.");
+                request.setAttribute("productList", null);
+                request.getRequestDispatcher(ERROR).forward(request, response);
+            }
+
         }
     }
 
