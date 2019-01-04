@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/views/modules/common/IncludeTop.jsp" %>
 
+<script type="text/javascript" src="${ctxJs}/cart/updateCart.js"></script>
+
 <div id="BackLink">
     <%--<stripes:link--%>
     <%--beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">--%>
@@ -45,7 +47,7 @@
                                 ${cartItem.item.attribute5} ${cartItem.item.product.name}</td>
                         <td>${cartItem.inStock}</td>
                         <td><input type="text" size="3" name="${cartItem.item.itemId}"
-                                   value="${cartItem.quantity}"/>
+                                   value="${cartItem.quantity}" id="itemQuantity"/>
                         </td>
                         <td><fmt:formatNumber value="${cartItem.item.listPrice}"
                                               pattern="$#,##0.00"/></td>

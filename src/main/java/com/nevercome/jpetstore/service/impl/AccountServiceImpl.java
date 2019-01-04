@@ -4,6 +4,7 @@ import com.nevercome.jpetstore.domain.model.Account;
 import com.nevercome.jpetstore.persistence.dao.AccountDAO;
 import com.nevercome.jpetstore.persistence.dao.impl.AccountDAOImpl;
 import com.nevercome.jpetstore.service.AccountService;
+import com.nevercome.jpetstore.utils.Global;
 import com.nevercome.jpetstore.utils.StringUtils;
 
 public class AccountServiceImpl implements AccountService {
@@ -11,7 +12,10 @@ public class AccountServiceImpl implements AccountService {
     private static class SingletonHolder {
         private static final AccountService INSTANCE = new AccountServiceImpl();
     }
-    private AccountServiceImpl() {}
+
+    private AccountServiceImpl() {
+    }
+
     public static final AccountService getInstance() {
         return SingletonHolder.INSTANCE;
     }
@@ -44,8 +48,14 @@ public class AccountServiceImpl implements AccountService {
     public void updateAccount(Account account) {
         accountDAO.updateAccount(account);
         accountDAO.updateProfile(account);
-        if(StringUtils.isNoneBlank(account.getPassword())) {
+        if (StringUtils.isNoneBlank(account.getPassword())) {
             accountDAO.updateSignIn(account);
         }
+    }
+
+    @Override
+    public String checkUserId(String userId) {
+        Account account = accountDAO.getAccountByUserId(userId);
+        return StringUtils.isBlank(account.getUserId()) ? Global.RESULT_USERID_OK : Global.RESULT_USERID_FAIL;
     }
 }

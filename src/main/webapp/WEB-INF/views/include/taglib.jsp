@@ -5,5 +5,6 @@
 <c:set var="ctxStatic" value="${pageContext.request.contextPath}/static"/>
 <c:set var="ctxCss" value="${pageContext.request.contextPath}/static/css"/>
 <c:set var="ctxImg" value="${pageContext.request.contextPath}/static/images"/>
+<c:set var="ctxJs" value="${pageContext.request.contextPath}/static/js"/>
 <c:set var="top" value="/WEB-INF/views/modules/common/IncludeTop.jsp" />
 <c:set var="bottom" value="/WEB-INF/views/modules/common/IncludeBottom.jsp" />

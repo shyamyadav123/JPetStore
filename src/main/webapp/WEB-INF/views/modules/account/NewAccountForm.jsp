@@ -3,11 +3,7 @@
 
 <jsp:useBean id="account" class="com.nevercome.jpetstore.domain.model.Account"/>
 
-<script type="text/javascript">
-    function change() {
-
-    }
-</script>
+<script type="text/javascript" src="${ctxJs}/account/checkUserId.js"></script>
 
 <div id="Catalog">
     <%--<stripes:form beanclass="org.mybatis.jpetstore.web.actions.AccountActionBean" focus="">--%>
@@ -34,7 +30,8 @@
         <table>
             <tr>
                 <td>User ID:</td>
-                <td><input type="text" name="account.userId"/></td>
+                <td><input type="text" name="account.userId" id="userId"/>
+                    <label id="id_result" style="display: none">用户名可以使用</label></td>
             </tr>
             <tr>
                 <td>New password:</td>

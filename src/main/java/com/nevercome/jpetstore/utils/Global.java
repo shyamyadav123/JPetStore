@@ -104,4 +104,7 @@ public class Global {
     public static final String COL_ORDERSTATUS_LINENUM = "linenum";
     public static final String COL_ORDERSTATUS_TIMESTAMP = "timestamp";
     public static final String COL_ORDERSTATUS_STATUS = "status";
+
+    public static final String RESULT_USERID_OK = "ok";
+    public static final String RESULT_USERID_FAIL = "fail";
 }

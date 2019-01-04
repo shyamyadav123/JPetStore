@@ -11,4 +11,7 @@ public interface AccountService {
     void insertAccount(Account account);
 
     void updateAccount(Account account);
+
+    String checkUserId(String userId);
+
 }

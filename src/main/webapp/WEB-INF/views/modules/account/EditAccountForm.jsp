@@ -3,6 +3,8 @@
 
 <jsp:useBean id="account" class="com.nevercome.jpetstore.domain.model.Account" />
 
+<%--<script type="text/javascript" src="${ctxJs}/account/checkUserId.js"></script>--%>
+
 <div id="Catalog">
     <%--<stripes:form--%>
     <%--beanclass="org.mybatis.jpetstore.web.actions.AccountActionBean"--%>
