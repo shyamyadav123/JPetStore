@@ -18,7 +18,12 @@ $(document).ready(function () {
                 url: "ajax_updateCart",
                 method: "post",
                 data: data,
-                success: function () {
+                success: function (msg) {
+                    console.log(msg);
+                    if (msg !== "ok") {
+                        alert("Sorry, over stock!");
+                        return;
+                    }
                     var price = parseFloat($(that).parent().next().text().replace(/^\s*|\s*$/g, "").substring(1));
                     var oldTotalPrice = parseFloat($(that).parent().next().next().text().replace(/^\s*|\s*$/g, "").substring(1));
                     var addMoney = price * (quantity - oldQuantity);

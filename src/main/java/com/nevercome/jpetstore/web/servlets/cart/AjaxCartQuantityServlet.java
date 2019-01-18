@@ -26,6 +26,7 @@ public class AjaxCartQuantityServlet extends HttpServlet {
             HttpSession session = request.getSession();
             cart = (Cart) session.getAttribute("cart");
             Iterator<CartItem> cartItems = cart.getAllCartItems();
+            response.setContentType("text/html");
             while (cartItems.hasNext()) {
                 CartItem cartItem = cartItems.next();
                 String itemId = cartItem.getItem().getItemId();
@@ -33,6 +34,15 @@ public class AjaxCartQuantityServlet extends HttpServlet {
                     String s = request.getParameter(itemId);
                     if (s != null) {
                         int quantity = Integer.parseInt(request.getParameter(itemId));
+                        if(quantity > 10000) {
+                            PrintWriter out = response.getWriter();
+                            out.println("overflow");
+                            request.setAttribute("message", "Sorry, over stock");
+                            continue;
+                        } else {
+                            PrintWriter out = response.getWriter();
+                            out.println("ok");
+                        }
                         cart.setQuantityByItemId(itemId, quantity);
                         if (quantity < 1) {
                             cartItems.remove();
@@ -42,7 +52,7 @@ public class AjaxCartQuantityServlet extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-            request.getRequestDispatcher(VIEW_CART).forward(request, response);
+//            request.getRequestDispatcher(VIEW_CART).forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
