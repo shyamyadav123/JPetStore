@@ -1,12 +1,15 @@
 package web;
 
 import com.opensymphony.xwork2.ActionSupport;
+import domain.Account;
+import domain.Cart;
 import domain.Order;
 import service.OrderService;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: sun
@@ -81,17 +84,36 @@ public class OrderAction extends ActionSupport {
 
     public String listOrders() {
 //        HttpSession session = context.getRequest().getSession();
+        Map session = WebUtils.getSession();
 //        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
 //        orderList = orderService.getOrdersByUsername(accountBean.getAccount().getUsername());
-        return "LIST_ORDERS";
+        AccountAction accountAction = (AccountAction) session.get("accountAction");
+        orderList = orderService.getOrdersByUsername(accountAction.getAccount().getUsername());
+        return "success";
     }
 
     public String newOrderForm() {
 //        HttpSession session = context.getRequest().getSession();
 //        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
 //        CartActionBean cartBean = (CartActionBean) session.getAttribute("/actions/Cart.action");
+        Map session = WebUtils.getSession();
+        AccountAction accountAction = (AccountAction) session.get("accountAction");
+        CartAction cartAction = (CartAction)session.get("cartAction");
 
         clear();
+        if (accountAction == null || !accountAction.isAuthenticated()) {
+            WebUtils.setMessage("You must sign on before attempting to check out.  Please sign on and try checking out again.");
+//            return new ForwardResolution(AccountActionBean.class);
+            return "error";
+        } else if (cartAction != null) {
+            order.initOrder(accountAction.getAccount(), cartAction.getCart());
+//            return new ForwardResolution(NEW_ORDER);
+            return "success";
+        } else {
+            WebUtils.setMessage("An order could not be created because a cart could not be found.");
+//            return new ForwardResolution(ERROR);
+            return "error";
+        }
 //        if (accountBean == null || !accountBean.isAuthenticated()) {
 //            setMessage("You must sign on before attempting to check out.  Please sign on and try checking out again.");
 //            return new ForwardResolution(AccountActionBean.class);
@@ -102,48 +124,54 @@ public class OrderAction extends ActionSupport {
 //            setMessage("An order could not be created because a cart could not be found.");
 //            return new ForwardResolution(ERROR);
 //        }
-        return "";
     }
 
-//    public Resolution newOrder() {
+    public String newOrder() {
 //        HttpSession session = context.getRequest().getSession();
-//
-//        if (shippingAddressRequired) {
-//            shippingAddressRequired = false;
+        Map session = WebUtils.getSession();
+        if (shippingAddressRequired) {
+            shippingAddressRequired = false;
 //            return new ForwardResolution(SHIPPING);
-//        } else if (!isConfirmed()) {
+            return "SHIPPING";
+        } else if (!isConfirmed()) {
 //            return new ForwardResolution(CONFIRM_ORDER);
-//        } else if (getOrder() != null) {
-//
-//            orderService.insertOrder(order);
-//
+            return "CONFIRM_ORDER";
+        } else if (getOrder() != null) {
+
+            orderService.insertOrder(order);
+
 //            CartActionBean cartBean = (CartActionBean) session.getAttribute("/actions/Cart.action");
 //            cartBean.clear();
-//
-//            setMessage("Thank you, your order has been submitted.");
-//
+            CartAction cartAction = (CartAction) session.get("cartAction");
+
+            WebUtils.setMessage("Thank you, your order has been submitted.");
+
 //            return new ForwardResolution(VIEW_ORDER);
-//        } else {
-//            setMessage("An error occurred processing your order (order was null).");
+            return "VIEW_ORDER";
+        } else {
+            WebUtils.setMessage("An error occurred processing your order (order was null).");
 //            return new ForwardResolution(ERROR);
-//        }
-//    }
+            return "error";
+        }
+    }
 //
-//    public Resolution viewOrder() {
+
+    public String viewOrder() {
 //        HttpSession session = context.getRequest().getSession();
-//
+        Map session = WebUtils.getSession();
 //        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("accountBean");
-//
-//        order = orderService.getOrder(order.getOrderId());
-//
-//        if (accountBean.getAccount().getUsername().equals(order.getUsername())) {
+        AccountAction accountAction = (AccountAction) session.get("accountAction");
+        order = orderService.getOrder(order.getOrderId());
+
+        if (accountAction.getAccount().getUsername().equals(order.getUsername())) {
 //            return new ForwardResolution(VIEW_ORDER);
-//        } else {
-//            order = null;
-//            setMessage("You may only view your own orders.");
-//            return new ForwardResolution(ERROR);
-//        }
-//    }
+            return "success";
+        } else {
+            order = null;
+            WebUtils.setMessage("You may only view your own orders.");
+            return "error";
+        }
+    }
 
     public void clear() {
         order = new Order();

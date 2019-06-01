@@ -13,6 +13,7 @@ public class AccountAction extends ActionSupport {
     private String[] bannerOption;
     private String favouriteCategoryId;
     private String languagePreference;
+    private boolean authenticated;
     private AccountService accountService;
 
     public AccountAction() {
@@ -116,4 +117,15 @@ public class AccountAction extends ActionSupport {
         return "success";
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public boolean isAuthenticated() {
+        return authenticated && account != null && account.getUsername() != null;
+    }
 }

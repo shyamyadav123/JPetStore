@@ -1,5 +1,6 @@
 package web;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import domain.Category;
 import domain.Item;
@@ -7,6 +8,7 @@ import domain.Product;
 import service.CatalogService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: sun
@@ -133,7 +135,7 @@ public class CatalogAction extends ActionSupport {
             productList = catalogService.getProductListByCategory(categoryId);
             category = catalogService.getCategory(categoryId);
         }
-        return "VIEW_CATEGORY";
+        return "success";
     }
 
     public String viewProduct() {
@@ -141,22 +143,26 @@ public class CatalogAction extends ActionSupport {
             itemList = catalogService.getItemListByProduct(productId);
             product = catalogService.getProduct(productId);
         }
-        return "VIEW_PRODUCT";
+        return "success";
     }
 
     public String viewItem() {
         item = catalogService.getItem(itemId);
         product = item.getProduct();
-        return "VIEW_ITEM";
+        return "success";
     }
 
     public String searchProducts() {
         if (keyword == null || keyword.length() < 1) {
 //            setMessage("Please enter a keyword to search for, then press the search button.");
-            return "ERROR";
+            ActionContext context = ActionContext.getContext();
+            Map request = (Map) context.get("request");
+            if (request != null)
+                request.put("message", "Please enter a keyword to search for, then press the search button.");
+            return "error";
         } else {
             productList = catalogService.searchProductList(keyword.toLowerCase());
-            return "SEARCH_PRODUCTS";
+            return "success";
         }
     }
 
