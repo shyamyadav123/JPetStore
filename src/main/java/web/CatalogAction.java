@@ -134,6 +134,8 @@ public class CatalogAction extends ActionSupport {
         if (categoryId != null) {
             productList = catalogService.getProductListByCategory(categoryId);
             category = catalogService.getCategory(categoryId);
+//            Map request = WebUtils.getRequest();
+//            request.put("category", category);
         }
         return "success";
     }

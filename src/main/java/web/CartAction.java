@@ -32,14 +32,18 @@ public class CartAction extends ActionSupport {
         this.itemId = itemId;
     }
 
+    public CartAction() {
+        catalogService = new CatalogService();
+    }
+
     public String ViewCart() {
-        ActionContext context = ActionContext.getContext();
-        Map session = context.getSession();
-        Cart cart = (Cart) session.get("cart");
-        if (cart == null) {
-            cart = new Cart();
-            session.put("cart", cart);
-        }
+//        ActionContext context = ActionContext.getContext();
+//        Map session = context.getSession();
+//        Cart cart = (Cart) session.get("cart");
+//        if (cart == null) {
+//            cart = new Cart();
+//            session.put("cart", cart);
+//        }
         return "success";
     }
 
@@ -61,7 +65,7 @@ public class CartAction extends ActionSupport {
         Item item = cart.removeItemById(workingItemId);
 
         if (item == null) {
-            //setMessage("Attempted to remove null CartItem from Cart.");
+            WebUtils.setMessage("Attempted to remove null CartItem from Cart.");
             return "error";
         } else {
             return "success";

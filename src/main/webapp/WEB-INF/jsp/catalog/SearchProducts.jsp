@@ -20,11 +20,11 @@
         <c:forEach var="product" items="${requestScope.productList}">
             <tr>
                 <td>
-                    <a href="catalog/viewProduct?productId=${product.productId}">${product.description}</a>
+                    <a href="viewProduct?productId=${product.productId}">${product.description}</a>
                 </td>
                 <td>
                     <b>
-                        <a href="catalog/viewProduct?productId=${product.productId}">
+                        <a href="viewProduct?productId=${product.productId}">
                             <font color="BLACK"> ${product.productId} </font></a>
                     </b>
                 </td>

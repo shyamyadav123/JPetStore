@@ -28,7 +28,7 @@
 	<c:forEach var="item" items="${requestScope.itemList}">
 		<tr>
 			<td>
-				<a href="=catalog/viewItem?itemId=${item.itemId}">${item.itemId}</a>
+				<a href="viewItem?itemId=${item.itemId}">${item.itemId}</a>
 			</td>
 			<td>${item.product.productId}</td>
 			<td>${item.attribute1} ${item.attribute2} ${item.attribute3}
@@ -36,7 +36,7 @@
 			<td><fmt:formatNumber value="${item.listPrice}"
 				pattern="$#,##0.00" /></td>
 			<td>
-				<a href="=cart/addItemToCart?workingItemId=${item.itemId}">Add to Cart</a>
+				<a href="addItemToCart?workingItemId=${item.itemId}">Add to Cart</a>
 			</td>
 		</tr>
 	</c:forEach>

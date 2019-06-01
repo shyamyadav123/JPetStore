@@ -1,6 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
+
 <%--<%@ include file="/WEB-INF/views/modules/common/IncludeTop.jsp" %>--%>
 <%@ include file="../common/IncludeTop.jsp"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 
 <div id="BackLink">
     <%--<stripes:link--%>
@@ -12,6 +13,11 @@
 <div id="Catalog">
 
     <h2>${requestScope.category.name}</h2>
+    <h2><s:property value="#request.category.name"/></h2>
+    <h2><s:property value="#session.category.name"/></h2>
+    <h2><s:property value="#catalogAction.category.name"/></h2>
+    <h2><s:property value="#actionBean.category.name"/></h2>
+    <h2>${actionBean.category.name}</h2>
     <table>
         <tr>
             <th>Product ID</th>
@@ -26,7 +32,7 @@
                         <%--<stripes:param name="productId" value="${product.productId}" />--%>
                         <%--${product.productId}--%>
                         <%--</stripes:link>--%>
-                    <a href="catalog/viewProduct?productId=${product.productId}">${product.productId}</a>
+                    <a href="viewProduct?productId=${product.productId}">${product.productId}</a>
                 </td>
                 <td>${product.name}</td>
             </tr>
