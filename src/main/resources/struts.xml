@@ -47,6 +47,23 @@
             <!--<result name="SEARCH_PRODUCTS">"/WEB-INF/jsp/catalog/SearchProducts.jsp"</result>-->
         </action>
 
+        <action name="viewCart" class="web.CartAction" method="ViewCart">
+            <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
+        </action>
+        <action name="addItemToCart" class="web.CartAction" method="AddItemToCart">
+            <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
+        </action>
+        <action name="removeItemFromCart" class="web.CartAction" method="removeItemFromCart">
+            <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
+            <result name="error">/WEB-INF/jsp/common/Error.jsp</result>
+        </action>
+        <action name="checkOut" class="web.CartAction" method="checkOut">
+            <result name="success">/WEB-INF/jsp/cart/Checkout.jsp</result>
+        </action>
+        <action name="updateCartQuantities" class="web.CartAction" method="updateCartQuantities">
+            <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
+        </action>
+
         <action name="listOrders" class="web.OrderAction" method="listOrders">
             <result name="success">/WEB-INF/jsp/order/ListOrders.jsp</result>
         </action>
