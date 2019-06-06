@@ -2,7 +2,7 @@
 
 <div id="Catalog">
 	<form action="signIn" method="post">
-		<p>${sessionScope.message}</p>
+		<p>${requestScope.message}</p>
 	<p>Please enter your username and password.</p>
 	<p>
 		Username:<input type="text" name="account.username" value="j2ee"/><br />

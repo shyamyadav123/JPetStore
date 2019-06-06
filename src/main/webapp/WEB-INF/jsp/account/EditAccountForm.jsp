@@ -8,7 +8,7 @@
 	<table>
 		<tr>
 			<td>User ID:</td>
-			<td>${sessionScope.username}</td>
+			<td>${sessionScope.account.username}</td>
 		</tr>
 		<tr>
 			<td>New password:</td>

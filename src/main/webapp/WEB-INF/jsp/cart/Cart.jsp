@@ -22,13 +22,13 @@
 			<th>&nbsp;</th>
 		</tr>
 
-		<c:if test="${requestScope.cart.numberOfItems == 0}">
+		<c:if test="${sessionScope.cart.numberOfItems == 0}">
 			<tr>
 				<td colspan="8"><b>Your cart is empty.</b></td>
 			</tr>
 		</c:if>
 
-		<c:forEach var="cartItem" items="${requestScope.cart.cartItems}">
+		<c:forEach var="cartItem" items="${sessionScope.cart.cartItems}">
 			<tr>
 				<td>
                     <a href="viewItem?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
@@ -63,7 +63,7 @@
 		<tr>
 			<td colspan="7">Sub Total:
                 <fmt:formatNumber
-				value="${requestScope.cart.subTotal}" pattern="$#,##0.00" />
+				value="${sessionScope.cart.subTotal}" pattern="$#,##0.00" />
                 <input  class="Button" type="submit" value="Update Cart"/>
             </td>
 
@@ -72,7 +72,7 @@
 	</table>
     </form>
 
-    <c:if test="${requestScope.cart.numberOfItems > 0}">
+    <c:if test="${sessionScope.cart.numberOfItems > 0}">
         <a href="newOrderFormServlet" class="Button">Proceed to Checkout</a>
      </c:if>
 </div>

@@ -1,5 +1,5 @@
 <%@ include file="../common/IncludeTop.jsp"%>
 
-${sessionScope.message}
+${requestScope.message}
 
 <%@ include file="../common/IncludeButtom.jsp"%>

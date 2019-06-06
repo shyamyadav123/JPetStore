@@ -84,9 +84,11 @@ public class AccountAction extends ActionSupport {
         Map session = context.getSession();
         if (account == null) {
             String value = "Invalid username or password.  Signon failed.";
-            session.put("message", value);
+//            session.put("message", value);
+            WebUtils.setMessage(value);
             return "input";
         } else {
+            account.setAuthenticated(true);
             session.put("account", account);
             return "success";
         }

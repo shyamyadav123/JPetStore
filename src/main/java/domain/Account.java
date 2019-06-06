@@ -24,6 +24,7 @@ public class Account implements Serializable {
   private boolean listOption;
   private boolean bannerOption;
   private String bannerName;
+  private boolean authenticated;
 
   public String getUsername() {
     return username;
@@ -170,4 +171,11 @@ public class Account implements Serializable {
     this.bannerName = bannerName;
   }
 
+  public boolean isAuthenticated() {
+    return authenticated;
+  }
+
+  public void setAuthenticated(boolean authenticated) {
+    this.authenticated = authenticated;
+  }
 }

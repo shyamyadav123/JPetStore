@@ -87,8 +87,11 @@ public class OrderAction extends ActionSupport {
         Map session = WebUtils.getSession();
 //        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
 //        orderList = orderService.getOrdersByUsername(accountBean.getAccount().getUsername());
-        AccountAction accountAction = (AccountAction) session.get("accountAction");
-        orderList = orderService.getOrdersByUsername(accountAction.getAccount().getUsername());
+//        AccountAction accountAction = (AccountAction) session.get("account");
+//        orderList = orderService.getOrdersByUsername(accountAction.getAccount().getUsername());
+        Account account = (Account) session.get("account");
+        orderList = orderService.getOrdersByUsername(account.getUsername());
+
         return "success";
     }
 
@@ -97,16 +100,18 @@ public class OrderAction extends ActionSupport {
 //        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("/actions/Account.action");
 //        CartActionBean cartBean = (CartActionBean) session.getAttribute("/actions/Cart.action");
         Map session = WebUtils.getSession();
-        AccountAction accountAction = (AccountAction) session.get("accountAction");
-        CartAction cartAction = (CartAction)session.get("cartAction");
+//        AccountAction accountAction = (AccountAction) session.get("accountAction");
+//        CartAction cartAction = (CartAction)session.get("cartAction");
+        Account account = (Account) session.get("account");
+        Cart cart = (Cart) session.get("cart");
 
         clear();
-        if (accountAction == null || !accountAction.isAuthenticated()) {
+        if (account == null || !account.isAuthenticated()) {
             WebUtils.setMessage("You must sign on before attempting to check out.  Please sign on and try checking out again.");
 //            return new ForwardResolution(AccountActionBean.class);
             return "error";
-        } else if (cartAction != null) {
-            order.initOrder(accountAction.getAccount(), cartAction.getCart());
+        } else if (cart != null) {
+            order.initOrder(account, cart);
 //            return new ForwardResolution(NEW_ORDER);
             return "success";
         } else {
@@ -142,7 +147,8 @@ public class OrderAction extends ActionSupport {
 
 //            CartActionBean cartBean = (CartActionBean) session.getAttribute("/actions/Cart.action");
 //            cartBean.clear();
-            CartAction cartAction = (CartAction) session.get("cartAction");
+//            CartAction cartAction = (CartAction) session.get("cartAction");
+            Cart cart = (Cart) session.get("cart");
 
             WebUtils.setMessage("Thank you, your order has been submitted.");
 
@@ -160,10 +166,11 @@ public class OrderAction extends ActionSupport {
 //        HttpSession session = context.getRequest().getSession();
         Map session = WebUtils.getSession();
 //        AccountActionBean accountBean = (AccountActionBean) session.getAttribute("accountBean");
-        AccountAction accountAction = (AccountAction) session.get("accountAction");
+//        AccountAction accountAction = (AccountAction) session.get("accountAction");
+        Account account = (Account) session.get("account");
         order = orderService.getOrder(order.getOrderId());
 
-        if (accountAction.getAccount().getUsername().equals(order.getUsername())) {
+        if (account.getUsername().equals(order.getUsername())) {
 //            return new ForwardResolution(VIEW_ORDER);
             return "success";
         } else {

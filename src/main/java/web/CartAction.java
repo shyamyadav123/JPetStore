@@ -37,17 +37,22 @@ public class CartAction extends ActionSupport {
     }
 
     public String ViewCart() {
-//        ActionContext context = ActionContext.getContext();
-//        Map session = context.getSession();
-//        Cart cart = (Cart) session.get("cart");
-//        if (cart == null) {
-//            cart = new Cart();
-//            session.put("cart", cart);
-//        }
+        ActionContext context = ActionContext.getContext();
+        Map session = context.getSession();
+        Cart cart = (Cart) session.get("cart");
+        if (cart == null) {
+            cart = new Cart();
+            session.put("cart", cart);
+        }
         return "success";
     }
 
     public String AddItemToCart() {
+        Map session = WebUtils.getSession();
+        Cart cart = (Cart) session.get("cart");
+        if (cart == null) {
+            cart = new Cart();
+        }
         if (cart.containsItemId(workingItemId)) {
             cart.incrementQuantityByItemId(workingItemId);
         } else {
@@ -58,12 +63,18 @@ public class CartAction extends ActionSupport {
             Item item = catalogService.getItem(workingItemId);
             cart.addItem(item, isInStock);
         }
+        session.put("cart", cart);
         return "success";
     }
 
     public String removeItemFromCart() {
+        Map session = WebUtils.getSession();
+        Cart cart = (Cart) session.get("cart");
+        if (cart == null) {
+            cart = new Cart();
+        }
         Item item = cart.removeItemById(workingItemId);
-
+        session.put("cart", cart);
         if (item == null) {
             WebUtils.setMessage("Attempted to remove null CartItem from Cart.");
             return "error";
@@ -73,7 +84,13 @@ public class CartAction extends ActionSupport {
     }
 
     public String updateCartQuantities() {
-        Iterator<CartItem> cartItems = getCart().getAllCartItems();
+        Map session = WebUtils.getSession();
+        Cart cart = (Cart) session.get("cart");
+        if (cart == null) {
+            cart = new Cart();
+        }
+//        Iterator<CartItem> cartItems = getCart().getAllCartItems();
+        Iterator<CartItem> cartItems = cart.getAllCartItems();
         while (cartItems.hasNext()) {
             CartItem cartItem = (CartItem) cartItems.next();
             String itemId = cartItem.getItem().getItemId();
@@ -87,6 +104,7 @@ public class CartAction extends ActionSupport {
                 //ignore parse exceptions on purpose
             }
         }
+        session.put("cart", cart);
         return "success";
     }
 

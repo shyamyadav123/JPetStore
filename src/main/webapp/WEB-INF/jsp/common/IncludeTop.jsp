@@ -47,10 +47,10 @@
             <img align="middle" src="images/separator.gif"/>
             <a href="toSignIn">Sign In</a>
             <!--
-            <c:if test="${session.account==null}">
+            <c:if test="${sessionScope.account==null}">
             <a href="toSignIn">Sign In</a>
             </c:if>
-            <c:if test="${session.account!=null}">
+            <c:if test="${sessionScope.account!=null}">
             <a href="toSignOut">Sign Out</a>
             <img align="middle" src="images/separator.gif" /> <a
                 href="toMyAccount">My Account</a>

@@ -11,7 +11,7 @@
 		<%--value="${actionBean.product.categoryId}" />--%>
 	<%--Return to ${actionBean.product.categoryId}--%>
 <%--</stripes:link>--%>
-	<a href="=catalog/viewCategory?categoryId=${requestScope.product.categoryId}">Return to ${requestScope.product.categoryId}</a>
+	<a href="catalog/viewCategory?categoryId=${requestScope.product.categoryId}">Return to ${requestScope.product.categoryId}</a>
 </div>
 
 <div id="Catalog">
