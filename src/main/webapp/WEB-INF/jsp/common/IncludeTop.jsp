@@ -46,16 +46,16 @@
             </a>
             <img align="middle" src="images/separator.gif"/>
             <a href="toSignIn">Sign In</a>
-            <!--
-            <c:if test="${sessionScope.account==null}">
-            <a href="toSignIn">Sign In</a>
-            </c:if>
-            <c:if test="${sessionScope.account!=null}">
-            <a href="toSignOut">Sign Out</a>
-            <img align="middle" src="images/separator.gif" /> <a
-                href="toMyAccount">My Account</a>
-            </c:if>
-            -->
+            <%--<!----%>
+            <%--<c:if test="${sessionScope.account==null}">--%>
+            <%--<a href="toSignIn">Sign In</a>--%>
+            <%--</c:if>--%>
+            <%--<c:if test="${sessionScope.account!=null}">--%>
+            <%--<a href="toSignOut">Sign Out</a>--%>
+            <%--<img align="middle" src="images/separator.gif" /> <a--%>
+                <%--href="toMyAccount">My Account</a>--%>
+            <%--</c:if>--%>
+            <%---->--%>
             <img align="middle" src="images/separator.gif"/>
             <a href="../help.html">?</a>
         </div>
@@ -63,7 +63,7 @@
 
     <div id="Search">
         <div id="SearchContent">
-            <form action="searchProduct" method="post">
+            <form action="searchProducts" method="post">
                 <input type="text" name="keyword" size="14"/>
                 <input type="submit" name="searchProducts" value="Search"/>
             </form>

@@ -43,7 +43,7 @@
         </action>
         <action name="searchProducts" class="web.CatalogAction" method="searchProducts">
             <result name="error">/WEB-INF/jsp/common/Error.jsp</result>
-            <result name="success">"/WEB-INF/jsp/catalog/SearchProducts.jsp"</result>
+            <result name="success">/WEB-INF/jsp/catalog/SearchProducts.jsp</result>
             <!--<result name="SEARCH_PRODUCTS">"/WEB-INF/jsp/catalog/SearchProducts.jsp"</result>-->
         </action>
 
