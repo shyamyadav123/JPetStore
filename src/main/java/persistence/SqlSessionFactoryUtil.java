@@ -32,6 +32,7 @@ public class SqlSessionFactoryUtil {
 
         AccountDAO accountDAO = sqlSession.getMapper(AccountDAO.class);
         Account result = accountDAO.getAccountByUsernameAndPassword(account);
+        accountDAO.insertAccount(account);
         System.out.print(result);
     }
 }

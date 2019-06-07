@@ -9,13 +9,13 @@
 		<tr>
 			<td>User ID:</td>
 			<td>
-				<input type="text" name=account.username/>
+				<input type="text" name="account.username"/>
 			</td>
 		</tr>
 		<tr>
 			<td>New password:</td>
 			<td>
-				<input type="text" name=account.password/>;
+				<input type="text" name="account.password"/>;
 			</td>
 		</tr>
 		<tr>

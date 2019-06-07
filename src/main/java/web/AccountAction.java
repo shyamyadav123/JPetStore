@@ -69,8 +69,10 @@ public class AccountAction extends ActionSupport {
         favouriteCategoryId = getFavouriteCategoryId();
         account.setFavouriteCategoryId(favouriteCategoryId);
 
-        session.put("account", account);
+        System.out.println(account);
         accountService.insertAccount(account);
+        account.setPassword(null);
+        session.put("account", account);
         return "success";
     }
 
