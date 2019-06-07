@@ -33,7 +33,8 @@
             DESCN    as description,
             CATEGORY as categoryId
         from PRODUCT
-        WHERE lower(name) like #{value}
+        WHERE lower(name) like #{keywords} or lower(category) like #{keywords}
+        GROUP BY PRODUCTID
     </select>
 
 </mapper>

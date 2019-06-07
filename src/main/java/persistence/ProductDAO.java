@@ -1,6 +1,7 @@
 package persistence;
 
 import domain.Product;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ public interface ProductDAO {
 
     Product getProduct(String productId);
 
-    List<Product> searchProductList(String keywords);
+    List<Product> searchProductList(@Param("keywords") String keywords);
 
 }

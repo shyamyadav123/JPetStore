@@ -83,7 +83,7 @@
             <img src="images/sm_reptiles.gif"/>
         </a>
         <img src="images/separator.gif"/>
-        <a href="category?categoryId=CATS">
+        <a href="viewCategory?categoryId=CATS">
             <img src="images/sm_cats.gif"/>
         </a>
         <img src="images/separator.gif"/>
