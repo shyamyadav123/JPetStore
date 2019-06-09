@@ -156,11 +156,12 @@ public class AccountAction extends ActionSupport {
         String right_verifyCode;
         right_verifyCode = (String) session.get("SESSION_SECURITY_CODE");
         if (!right_verifyCode.equals(VerificationCode)) {
-            String value = "验证码输入错误";
+            String value = getText("signIn.message.code-error");
             this.addFieldError("error1", value);
         } else {
             if (account == null) {
-                String value = "Invalid username or password.  Signon failed.";
+//                String value = "Invalid username or password.  Signon failed.";
+                String value = getText("signIn.message.fail");
                 this.addFieldError("error1", value);
             } else {
                 account.setPassword(null);
