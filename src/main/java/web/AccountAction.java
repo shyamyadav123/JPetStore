@@ -163,6 +163,7 @@ public class AccountAction extends ActionSupport {
 //                String value = "Invalid username or password.  Signon failed.";
                 String value = getText("signIn.message.fail");
                 this.addFieldError("error1", value);
+
             } else {
                 account.setPassword(null);
                 myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());

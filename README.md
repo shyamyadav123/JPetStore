@@ -4,6 +4,7 @@
 - Structs2 and mybatis for jpetstore in branch structs2-mybatis
 - spring and mybatis for jpetstore in branch spring-mybatis
 
+
 #### Content
 1. 加入了部分Structs标签与OGNL的使用
 2. 使用了structs的表单自动验证和验证框架
