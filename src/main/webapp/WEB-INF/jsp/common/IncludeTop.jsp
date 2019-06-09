@@ -45,12 +45,21 @@
             </a>
             <img align="middle" src="/images/separator.gif" />
             <s:if test="%{#session.account==null}">
-            <a href="toSignIn">Sign In</a>
+            <a href="toSignIn">
+                <%--Sign In--%>
+                <s:text name="main.signIn" />
+            </a>
             </s:if>
             <s:if test="%{#session.account!=null}">
-            <a href="signOff">Sign Out</a>
+            <a href="signOff">
+                <%--Sign Out--%>
+                <s:text name="main.signOff" />
+            </a>
             <img align="middle" src="/images/separator.gif" /> <a
-                href="toMyAccount">My Account</a>
+                href="toMyAccount">
+                <%--My Account--%>
+                <s:text name="main.myAccount" />
+            </a>
             </s:if>
             <img align="middle" src="/images/separator.gif" />
             <a href="../help.html">?</a>
