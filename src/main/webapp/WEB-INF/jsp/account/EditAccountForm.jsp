@@ -33,6 +33,7 @@
         <%--<s:reset value="Reset" theme="simple"/>--%>
         <%--</form>--%>
     </s:form>
-    <a href="listOrders">My Orders</a>
+    <%--<a href="listOrders">My Orders</a>--%>
+    <s:a href="listOrders">My Orders</s:a>
 </div>
 <%@ include file="../common/IncludeButtom.jsp" %>

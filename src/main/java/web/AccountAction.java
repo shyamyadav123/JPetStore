@@ -51,8 +51,9 @@ public class AccountAction extends ActionSupport {
 
     static {
         List<String> langList = new ArrayList<String>();
-        langList.add("english");
-        langList.add("japanese");
+        langList.add("English");
+        langList.add("Japanese");
+        langList.add("Chinese");
         LANGUAGE_LIST = Collections.unmodifiableList(langList);
 
         List<String> catList = new ArrayList<String>();
