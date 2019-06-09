@@ -21,11 +21,11 @@
     <p><s:text name="signIn.title"/></p>
     <s:form action="signIn" method="post">
         <s:token/>
-        <s:textfield name="account.username" value="j2ee" label="form.username"/>
-        <s:password name="account.password" value="j2ee" label="form.password"/>
-        <s:textfield name="VerificationCode" label="form.verifyCode"/>
+        <s:textfield name="account.username" value="j2ee" key="form.username"/>
+        <s:password name="account.password" value="j2ee" label="%{getText('form.password')}"/>
+        <s:textfield name="VerificationCode" key="form.verifyCode"/>
+        <s:submit name="signon" key="signIn.submit" />
         <s:fielderror value="error1"/>
-        <s:submit name="signon" value="signIn.submit" />
     </s:form>
     <p>
         <img src="verifyCode?" id="Verify" border="0" style="cursor:hand;"/>
@@ -39,7 +39,10 @@
     <%--Need a user name and password?--%>
     <s:text name="signIn.needRegister"/>
     <%--<a href="toRegister">Register Now!</a>--%>
-    <s:a href="toRegister">Register Now!</s:a>
+    <s:a href="toRegister">
+        <s:text name="signIn.toRegister"/>
+        <%--Register Now!--%>
+    </s:a>
     <script type="text/javascript">
         function changeImg() {
             var myImg = document.getElementById("Verify");
