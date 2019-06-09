@@ -101,6 +101,12 @@
         </action>
         <!-- OrderAction End -->
 
+        <!-- I18N ChangeLanAction Begin -->
+        <action name="changeLan" class="web.ChangeLanAction">
+            <result name="success">/WEB-INF/jsp/catalog/Main.jsp</result>
+        </action>
+        <!-- I18N ChangeLanAction End -->
+
     </package>
     <!-- 实现国际化 -->
     <constant name="struts.custom.i18n.resources" value="I18N"/>

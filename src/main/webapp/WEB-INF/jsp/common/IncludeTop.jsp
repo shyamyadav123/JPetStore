@@ -62,9 +62,9 @@
             </a>
             </s:if>
             <img align="middle" src="/images/separator.gif" />
-            <s:text name="main.langCN" />
+            <s:a href="changeLan.action?request_locale=zh_CN"><s:text name="main.langCN" /></s:a>
             <img align="middle" src="/images/separator.gif" />
-            <s:text name="main.langEN" />
+            <s:a href="changeLan.action?request_locale=en_US"><s:text name="main.langEN" /></s:a>
             <img align="middle" src="/images/separator.gif" />
             <a href="../help.html">?</a>
         </div>
