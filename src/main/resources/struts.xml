@@ -6,13 +6,16 @@
 
 <struts>
     <package name="myPetStore" extends="struts-default">
+
+        <action name="main" class="web.MainAction" method="execute">
+            <result name="success">/WEB-INF/jsp/catalog/Main.jsp</result>
+        </action>
+
+        <!-- AccountAction Begin -->
         <action name="toRegister" class="web.AccountAction" method="ToNewAccount">
             <result name="input">/WEB-INF/jsp/account/NewAccountForm.jsp</result>
         </action>
         <action name="newAccount" class="web.AccountAction" method="NewAccount">
-            <result name="success">/WEB-INF/jsp/catalog/Main.jsp</result>
-        </action>
-        <action name="main" class="web.MainAction" method="execute">
             <result name="success">/WEB-INF/jsp/catalog/Main.jsp</result>
         </action>
         <action name="toSignIn" class="web.AccountAction" method="ToSignIn">
@@ -41,6 +44,9 @@
                 <param name="bufferSize">2048</param>
             </result>
         </action>
+        <!-- AccountAction End -->
+
+        <!-- CartAction Begin -->
         <action name="viewCart" class="web.CartAction" method="ViewCart">
             <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
         </action>
@@ -57,23 +63,43 @@
         <action name="updateCartQuantities" class="web.CartAction" method="updateCartQuantities">
             <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
         </action>
+        <!-- CartAction End -->
+
+        <!-- CatalogAction Begin -->
         <action name="viewCategory" class="web.CatalogAction" method="viewCategory">
             <result name="success">/WEB-INF/jsp/catalog/Category.jsp</result>
-            <!--<result name="VIEW_CATEGORY">/WEB-INF/jsp/catalog/Category.jsp</result>-->
         </action>
         <action name="viewProduct" class="web.CatalogAction" method="viewProduct">
             <result name="success">/WEB-INF/jsp/catalog/Product.jsp</result>
-            <!--<result name="VIEW_PRODUCT">/WEB-INF/jsp/catalog/Product.jsp</result>-->
         </action>
         <action name="viewItem" class="web.CatalogAction" method="viewItem">
             <result name="success">/WEB-INF/jsp/catalog/Item.jsp</result>
-            <!--<result name="VIEW_ITEM">/WEB-INF/jsp/catalog/Item.jsp</result>-->
         </action>
         <action name="searchProducts" class="web.CatalogAction" method="searchProducts">
             <result name="error">/WEB-INF/jsp/common/Error.jsp</result>
             <result name="success">"/WEB-INF/jsp/catalog/SearchProducts.jsp"</result>
-            <!--<result name="SEARCH_PRODUCTS">"/WEB-INF/jsp/catalog/SearchProducts.jsp"</result>-->
         </action>
+        <!-- CatalogAction End -->
+
+        <!-- OrderAction Begin -->
+        <action name="listOrders" class="web.OrderAction" method="listOrders">
+            <result name="success">/WEB-INF/jsp/order/ListOrders.jsp</result>
+        </action>
+        <action name="newOrderForm" class="web.OrderAction" method="newOrderForm">
+            <result name="success">/WEB-INF/jsp/order/NewOrderForm.jsp</result>
+            <result name="error">/WEB-INF/jsp/common/Error.jsp</result>
+        </action>
+        <action name="newOrder" class="web.OrderAction" method="newOrder">
+            <result name="SHIPPING">/WEB-INF/jsp/order/ShippingForm.jsp</result>
+            <result name="CONFIRM_ORDER">/WEB-INF/jsp/order/ConfirmOrder.jsp</result>
+            <result name="VIEW_ORDER">/WEB-INF/jsp/order/ViewOrder.jsp</result>
+            <result name="error">/WEB-INF/jsp/common/Error.jsp</result>
+        </action>
+        <action name="viewOrder" class="web.OrderAction" method="viewOrder">
+            <result name="success">/WEB-INF/jsp/order/ViewOrder.jsp</result>
+            <result name="error">/WEB-INF/jsp/common/Error.jsp</result>
+        </action>
+        <!-- OrderAction End -->
 
     </package>
 </struts>
