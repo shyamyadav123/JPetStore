@@ -102,4 +102,7 @@
         <!-- OrderAction End -->
 
     </package>
+    <!-- 实现国际化 -->
+    <constant name="struts.custom.i18n.resources" value="I18N"/>
+    <constant name="struts.i18n.encoding" value="UTF-8" />
 </struts>

@@ -5,7 +5,6 @@
   Time: 14:43
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
@@ -17,11 +16,10 @@
     <link rel="StyleSheet" href="/css/jpetstore.css" type="text/css"
           media="screen" />
 
-    <meta name="generator"
-          content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org" />
+    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org" />
     <title>JPetStore Demo</title>
-    <meta content="text/html; charset=windows-1252"
-          http-equiv="Content-Type" />
+    <%--<meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />--%>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Cache-Control" content="max-age=0" />
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="expires" content="0" />

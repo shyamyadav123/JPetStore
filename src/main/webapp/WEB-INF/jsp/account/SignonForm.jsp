@@ -16,8 +16,9 @@
     <%--</p>--%>
     <%--<input type="submit" name="signon" value="Login"/>--%>
     <%--</form>--%>
-    <p><s:property value="#request.message"/>
-    <p>Please enter your username and password.</p>
+    <s:property value="#request.message"/>
+        <%--<p>Please enter your username and password.</p>--%>
+    <p><s:text name="title"/></p>
     <s:form action="signIn" method="post">
         <s:token/>
         <s:textfield name="account.username" value="j2ee" label="Username"/>
