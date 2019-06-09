@@ -10,27 +10,28 @@
                 <td>User ID:</td>
                 <td><s:property value="#session.account.username"/></td>
             </tr>
-            <tr>
-                <td>New password:</td>
-                <td>
-                    <%--<input type="text" name="account.password"/>--%>
-                    <s:textfield name="account.password" />
-                </td>
-            </tr>
-            <tr>
-                <td>Repeat password:</td>
-                <td>
-                    <%--<input type="text" name="repeatedPassword"/>--%>
-                    <s:textfield name="repeatedPassword" />
-                </td>
-            </tr>
+                <%--<tr>--%>
+                <%--<td>New password:</td>--%>
+                <%--<td>--%>
+                <%--<input type="text" name="account.password"/>--%>
+                <%--label 还会自动带上引号...--%>
+                <%--</td>--%>
+            <s:textfield name="account.password" label="New password"/>
+                <%--</tr>--%>
+                <%--<tr>--%>
+                <%--<td>Repeat password:</td>--%>
+                <%--<td>--%>
+                <%--<input type="text" name="repeatedPassword"/>--%>
+                <%--</td>--%>
+                <%--</tr>--%>
+            <s:textfield name="repeatedPassword" label="Repeat password"/>
         </table>
 
         <%@ include file="IncludeAccountFields.jsp" %>
         <%--<input type="submit" name="editAccount" value="Save Account Information"/>--%>
-        <s:submit value="Save Account Information" theme="simple" />
-        <s:reset value="Reset" theme="simple" />
-    <%--</form>--%>
+        <s:submit value="Save Account Information" theme="simple"/>
+        <%--<s:reset value="Reset" theme="simple"/>--%>
+        <%--</form>--%>
     </s:form>
     <a href="listOrders">My Orders</a>
 </div>
