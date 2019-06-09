@@ -62,6 +62,10 @@
             </a>
             </s:if>
             <img align="middle" src="/images/separator.gif" />
+            <s:text name="main.langCN" />
+            <img align="middle" src="/images/separator.gif" />
+            <s:text name="main.langEN" />
+            <img align="middle" src="/images/separator.gif" />
             <a href="../help.html">?</a>
         </div>
     </div>

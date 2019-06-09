@@ -8,7 +8,8 @@
 <%@include file="../common/IncludeTop.jsp"%>
 <div id="Welcome">
     <div id="WelcomeContent">
-        Welcome to MyPetStore!
+        <%--Welcome to MyPetStore!--%>
+        <s:text name="main.welcome" />
     </div>
 </div>
 
