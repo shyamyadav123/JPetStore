@@ -8,16 +8,11 @@ import domain.VerifyCode;
 import service.AccountService;
 import service.CatalogService;
 
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.util.*;
-
-import com.opensymphony.xwork2.ActionSupport;
-import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
-
-
-
 
 public class AccountAction extends ActionSupport {
 
@@ -69,10 +64,10 @@ public class AccountAction extends ActionSupport {
         CATEGORY_LIST = Collections.unmodifiableList(catList);
     }
 
-    public AccountAction(){
-        account=new Account();
-        accountService=new AccountService();
-        catalogService=new CatalogService();
+    public AccountAction() {
+        account = new Account();
+        accountService = new AccountService();
+        catalogService = new CatalogService();
     }
 
     public void setAccount(Account account) {
@@ -117,7 +112,7 @@ public class AccountAction extends ActionSupport {
     }
 
 
-    public String ToNewAccount() throws Exception{
+    public String ToNewAccount() throws Exception {
         return "input";
     }
 
@@ -129,84 +124,91 @@ public class AccountAction extends ActionSupport {
         return "success";
     }
 
-    public String toMyAccount(){
+    public String toMyAccount() {
         return "input";
     }
 
     public String editAccount() {
-        ActionContext context=ActionContext.getContext();
-        Map session=context.getSession();
-        Account account1= (Account)session.get("account");
+        ActionContext context = ActionContext.getContext();
+        Map session = context.getSession();
+        Account account1 = (Account) session.get("account");
         account.setUsername(account1.getUsername());
         accountService.updateAccount(account);
         account = accountService.getAccount(account.getUsername());
         myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
-        session.put("account",account);
+        session.put("account", account);
         return "success";
     }
 
-    public String ToSignIn(){
+    public String ToSignIn() {
         return "input";
     }
 
-    public void validateSignIn(){
+    /**
+     * Structs2 的自动验证
+     */
+    public void validateSignIn() {
         this.clearFieldErrors();
-        ActionContext context=ActionContext.getContext();
-        Map session=context.getSession();
+        ActionContext context = ActionContext.getContext();
+        Map session = context.getSession();
         account = accountService.getAccount(getUsername(), getPassword());
         String right_verifyCode;
-        right_verifyCode=(String)session.get("SESSION_SECURITY_CODE");
-        if (!right_verifyCode.equals(VerificationCode)){
+        right_verifyCode = (String) session.get("SESSION_SECURITY_CODE");
+        if (!right_verifyCode.equals(VerificationCode)) {
             String value = "验证码输入错误";
-            this.addFieldError("error1",value);
-        }
-        else {
+            this.addFieldError("error1", value);
+        } else {
             if (account == null) {
                 String value = "Invalid username or password.  Signon failed.";
-                this.addFieldError("error1",value);
+                this.addFieldError("error1", value);
             } else {
                 account.setPassword(null);
                 myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
                 authenticated = true;
-                session.put("account",account);
+                session.put("account", account);
                 // this bean is already registered as /actions/Account.action
             }
         }
     }
 
     public String SignIn() {
-          if (this.hasFieldErrors()){
-              return "input";
-          }
-          else {
-              System.out.print("aaa");
-              return "success";
-          }
+        if (this.hasFieldErrors()) {
+            return "input";
+        } else {
+//            System.out.print("aaa");
+            // 日志记录登录成功
+            return "success";
+        }
     }
 
     public String signoff() {
-        ActionContext context=ActionContext.getContext();
-        Map session=context.getSession();
-        session.put("account",null);
+        ActionContext context = ActionContext.getContext();
+        Map session = context.getSession();
+        session.put("account", null);
         return "success";
     }
 
-    public String verifyCode(){
+    public String verifyCode() {
         String securityCode = VerifyCode.getSecurityCode();
-       imageStream = VerifyCode.getImageAsInputStream(securityCode);
-       Map session=WebUtils.getSession();
-       session.put("SESSION_SECURITY_CODE", securityCode);
-       return "success";
+        imageStream = VerifyCode.getImageAsInputStream(securityCode);
+        Map session = WebUtils.getSession();
+        session.put("SESSION_SECURITY_CODE", securityCode);
+        return "success";
     }
 
     public boolean isAuthenticated() {
         return authenticated && account != null && account.getUsername() != null;
     }
 
-    public void setMessage(String message){
-        ActionContext context=ActionContext.getContext();
-        Map session=context.getSession();
-        session.put("message",message);
+    /**
+     * message这类不应该放在session里面
+     * @param message
+     */
+    public void setMessage(String message) {
+//        ActionContext context = ActionContext.getContext();
+//        Map session = context.getSession();
+//        session.put("message", message);
+        WebUtils.setMessage(message);
     }
 }
 
