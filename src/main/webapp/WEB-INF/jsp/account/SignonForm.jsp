@@ -17,22 +17,27 @@
     <%--<input type="submit" name="signon" value="Login"/>--%>
     <%--</form>--%>
     <s:property value="#request.message"/>
-        <%--<p>Please enter your username and password.</p>--%>
-    <p><s:text name="title"/></p>
+    <%--<p>Please enter your username and password.</p>--%>
+    <p><s:text name="signIn.title"/></p>
     <s:form action="signIn" method="post">
         <s:token/>
-        <s:textfield name="account.username" value="j2ee" label="Username"/>
-        <s:password name="account.password" value="j2ee" label="Password"/>
-        <s:textfield name="VerificationCode" label="Verification Code"/>
+        <s:textfield name="account.username" value="j2ee" label="form.username"/>
+        <s:password name="account.password" value="j2ee" label="form.password"/>
+        <s:textfield name="VerificationCode" label="form.verifyCode"/>
         <s:fielderror value="error1"/>
+        <s:submit name="signon" value="signIn.submit" />
     </s:form>
     <p>
         <img src="verifyCode?" id="Verify" border="0" style="cursor:hand;"/>
-        <a href="javascript:changeImg();">Vague? Change it</a>
+        <a href="javascript:changeImg();">
+            <%--Vague? Change it--%>
+            <s:text name="form.verifyVague"/>
+        </a>
         <font color="red"><s:property value="#session.imageMess"/> </font>
     </p>
 
-    Need a user name and password?
+    <%--Need a user name and password?--%>
+    <s:text name="signIn.needRegister"/>
     <%--<a href="toRegister">Register Now!</a>--%>
     <s:a href="toRegister">Register Now!</s:a>
     <script type="text/javascript">
