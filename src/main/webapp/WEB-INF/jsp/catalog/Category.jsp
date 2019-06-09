@@ -12,8 +12,14 @@
 
 <div id="Catalog">
 
-    <%--<h2>${requestScope.category.name}</h2>--%>
-    <h2><s:property value="#request.category.name"/></h2>
+    <h2>${requestScope.category.name}</h2>
+    <%--<h2>${sessionScope.category.name}</h2>--%>
+    <%--<h2><s:property value="#request.category.name"/></h2>--%>
+    <%--<h2><s:property value="#session.category.name"/></h2>--%>
+    <%--<h2><s:property value="#category.name"/></h2>--%>
+    <%--<h2><s:property value="#catalogAction.category.name"/></h2>--%>
+    <%--<h2><s:property value="#actionBean.category.name"/></h2>--%>
+    <%--<h2>${actionBean.category.name}</h2>--%>
     <table>
         <tr>
             <th>Product ID</th>
@@ -28,7 +34,7 @@
                         <%--<stripes:param name="productId" value="${product.productId}" />--%>
                         <%--${product.productId}--%>
                         <%--</stripes:link>--%>
-                    <a href="catalog/viewProduct?productId=${product.productId}">${product.productId}</a>
+                    <a href="viewProduct?productId=${product.productId}">${product.productId}</a>
                 </td>
                 <td>${product.name}</td>
             </tr>

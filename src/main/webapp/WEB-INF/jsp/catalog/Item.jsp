@@ -2,6 +2,7 @@
 
 <div id="BackLink">
 <a href="viewProduct?productId=${requestScope.product.productId}">Return to ${requestScope.product.productId}</a>
+<a href="viewProduct?productId=${requestScope.product.productId}">Return to ${requestScope.product.productId}</a>
 </div>
 
 <div id="Catalog">
@@ -36,7 +37,7 @@
 
 	<tr>
 		<td>
-			<a class="Button" href="addItemToCart?workingItemId=${item.itemId}">Add to Cart</a>
+			<a class="Button" href="addItem?workingItemId=${item.itemId}">Add to Cart</a>
 		</td>
 	</tr>
 </table>
