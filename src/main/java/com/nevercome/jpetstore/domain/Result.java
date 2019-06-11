@@ -1,51 +1,44 @@
 package com.nevercome.jpetstore.domain;
 
+import lombok.Data;
+
+@Data
 public class Result {
+
     private String result;
     private String message;
     private Object obj;
     public static final String RESULT_SUCCESS = "success";
     public static final String RESULT_ERROR = "error";
-    public static final String RESULT_NO_AUTHORITY = "no authority";
-    public static final String RESULT_NO_ACCOUNT = "no account";
-    public static final String RESULT_WRONG_PASSWORD = "wrong password";
+    public static final String RESULT_FAIL = "fail";
 
-    public Result(String result) {
-        this.result = result;
-        String message = result.equals(RESULT_SUCCESS) ? "success" : "";
-        message = result.equals(RESULT_ERROR) ? "error" : message;
-        this.setMessage(message);
+    public Result() {
+        this.result = RESULT_SUCCESS;
+        this.message = null;
+        this.obj = null;
     }
 
-    public Result(String result, Object object) {
-        this.result = result;
-        this.obj = object;
-        String message = result.equals(RESULT_SUCCESS) ? "success" : "";
-        message = result.equals(RESULT_ERROR) ? "error" : message;
-        this.setMessage(message);
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
+    public Result(String message) {
+        this.result = RESULT_SUCCESS;
         this.message = message;
+        this.obj = null;
     }
 
-    public Object getObj() {
-        return obj;
+    public Result(Object obj) {
+        this.result = RESULT_SUCCESS;
+        this.message = null;
+        this.obj = obj;
     }
 
-    public void setObj(Object obj) {
+    public Result(String result, String message) {
+        this.result = result;
+        this.message = message;
+        this.obj = null;
+    }
+
+    public Result(String result, Object obj) {
+        this.result = result;
+        this.message = null;
         this.obj = obj;
     }
 }
