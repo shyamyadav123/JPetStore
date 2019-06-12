@@ -1,7 +1,6 @@
-package org.csu.jpetstore.web;
+package org.csu.jpetstore.common.result;
 
 import java.lang.annotation.*;
-import java.lang.reflect.Method;
 
 /**
  * 接口返回结果增强

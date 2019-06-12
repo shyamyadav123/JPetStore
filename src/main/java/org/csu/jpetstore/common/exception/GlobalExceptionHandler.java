@@ -1,6 +1,6 @@
-package org.csu.jpetstore.exception;
+package org.csu.jpetstore.common.exception;
 
-import org.csu.jpetstore.web.DefaultErrorResult;
+import org.csu.jpetstore.common.result.DefaultErrorResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;

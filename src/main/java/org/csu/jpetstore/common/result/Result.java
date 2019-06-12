@@ -1,4 +1,4 @@
-package org.csu.jpetstore.web;
+package org.csu.jpetstore.common.result;
 
 import java.io.Serializable;
 
