@@ -44,5 +44,10 @@ public class CatalogController {
         return PlatformResult.success(catalogService.getItem(id));
     }
 
+    @GetMapping("/product/{keywords}/products")
+    public PlatformResult searchProducts(@PathVariable("keywords") String keywords) {
+        return PlatformResult.success(catalogService.searchProductList(keywords));
+    }
+
 
 }
