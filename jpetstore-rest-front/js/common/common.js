@@ -1,5 +1,5 @@
 function getQueryString(name) {
-    const  reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
     const r = window.location.search.substr(1).match(reg);
     if (r != null) {
         return unescape(r[2]);
@@ -9,6 +9,14 @@ function getQueryString(name) {
 
 // search
 $(document).ready(function () {
+
+    $('#searchButton').click(function () {
+        let action = $('#searchForm').attr("action");
+        action = action + "?keywords=" + $('#searchInput').val();
+        $('#searchForm').attr("action", action);
+        $('#searchForm').submit();
+    });
+
     $("#searchInput").on("input propertychange", function (e) {
         const keyword = $(this).val();
         if (keyword) {

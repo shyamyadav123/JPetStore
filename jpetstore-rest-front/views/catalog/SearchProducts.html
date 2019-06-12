@@ -41,9 +41,9 @@
 
     <div id="Search">
         <div id="SearchContent">
-            <form action="../catalog/SearchProducts.html" method="post">
-                <input type="text" name="keyword" size="14" title=""/>
-                <input id="search-button" type="submit" name="searchProducts" value="Search"/>
+            <form id="searchForm" action="../catalog/SearchProducts.html" method="post">
+                <input id="searchInput" type="text" name="keyword" size="14" title=""/>
+                <input id="searchButton" type="button" name="searchProducts" value="Search"/>
             </form>
         </div>
     </div>
@@ -95,7 +95,10 @@
     </div>
 
 </div>
-
+<script type="text/javascript" src="../../plugins/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../plugins/json/jquery.json.min.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script type="text/javascript" src="../../js/catalog/searchProducts.js"></script>
 </body>
 </html>
 
