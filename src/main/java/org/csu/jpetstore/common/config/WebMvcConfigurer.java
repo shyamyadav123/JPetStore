@@ -1,6 +1,8 @@
 package org.csu.jpetstore.common.config;
 
 import org.csu.jpetstore.common.result.ResponseResultInterceptor;
+import org.csu.jpetstore.common.security.Authorization;
+import org.csu.jpetstore.common.security.AuthorizationInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -18,10 +20,14 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
     @Autowired
     private ResponseResultInterceptor responseResultInterceptor;
+    @Autowired
+    private AuthorizationInterceptor authorizationInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         String apiUri = "/**";
+        // 权限校验拦截器
+        registry.addInterceptor(authorizationInterceptor).addPathPatterns(apiUri);
         //  响应结果控制拦截
         registry.addInterceptor(responseResultInterceptor).addPathPatterns(apiUri);
     }

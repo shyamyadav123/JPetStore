@@ -2,11 +2,14 @@ package org.csu.jpetstore.controller;
 
 import org.csu.jpetstore.common.result.PlatformResult;
 import org.csu.jpetstore.common.result.ResponseResult;
+import org.csu.jpetstore.common.security.Authorization;
 import org.csu.jpetstore.common.security.TokenManager;
 import org.csu.jpetstore.domain.Account;
 import org.csu.jpetstore.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @author: sun
@@ -30,6 +33,13 @@ public class TokenController {
             return PlatformResult.success("Invalid username or password.  Login failed.");
         }
         return PlatformResult.success(tokenManager.createToken(username));
+    }
+
+    @Authorization
+    @DeleteMapping("/token")
+    public PlatformResult logout(@RequestParam("username") String username) {
+        tokenManager.deleteToken(username);
+        return PlatformResult.success();
     }
 
 }

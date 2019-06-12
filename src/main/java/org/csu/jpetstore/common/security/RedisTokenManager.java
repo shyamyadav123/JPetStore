@@ -47,8 +47,10 @@ public class RedisTokenManager implements TokenManager {
         }
         String key = "user-token:" + model.getUserId();
         TokenModel cacheModel = (TokenModel) valueOperations.get(key);
-        if(cacheModel == null || !cacheModel.getToken().equals(model.getToken())
-                || model.getTimestamp().getTime()-cacheModel.getTimestamp().getTime() > TOKEN_EXPIRE_TIME) {
+//        System.err.println(model.getTimestamp().getTime());
+//        System.err.println(cacheModel.getTimestamp().getTime());
+        if (cacheModel == null || !cacheModel.getToken().equals(model.getToken())
+                || model.getTimestamp().getTime() - cacheModel.getTimestamp().getTime() > TOKEN_EXPIRE_TIME * 1000) {
             return false;
         }
         // 如果验证成功，说明此用户进行了一次有效操作，延长 token 的过期时间
@@ -62,7 +64,7 @@ public class RedisTokenManager implements TokenManager {
             return null;
         }
         // 这里是简单的由参数拼接来获取token
-        String [] param = authentication.split ("_");
+        String[] param = authentication.split("_");
         if (param.length != 2) {
             return null;
         }
