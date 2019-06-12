@@ -7,11 +7,10 @@ $(function () {
         url: "http://localhost:8080/catalog/category/" + categoryId,
         type: "get",
         //data用于接收服务器给予数据
-        success: function (data) {
+        success: function (res) {
             //输出查看是否正确
-            console.log("Hello Category");
-            console.log(data);
-            $("#categoryName").text(data.name);
+            console.log(res);
+            $("#categoryName").html(res.data.name);
         },
         error: function () {
             alert("Error")
@@ -26,12 +25,12 @@ $(function () {
         url: "http://localhost:8080/catalog/category/" + categoryId + "/products",
         dataType: 'json',
         type: "get",
-        success: function (data) {
-            console.log("Hello Products");
-            console.log(data);
+        success: function (res) {
+            console.log(res);
+            const data = res.data;
             for (let i = 0; i < data.length; i++) {
-                dataHtml = "<tr><td><a href='../../views/catalog/Product.html?productId=" 
-                + data[i].productId + "&categoryId=" + categoryId + "'>" +
+                dataHtml = "<tr><td><a href='Product.html?productId="
+                + data[i].productId + "&categoryId=" + categoryId + "'>" + data[i].productId +
                     "</a></td><td>" + data[i].name + "</td></tr>";
                 console.log(dataHtml);
                 $("#productList").append(dataHtml);

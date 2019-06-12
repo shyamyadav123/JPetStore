@@ -10,11 +10,10 @@ $(function () {
         url: "http://localhost:8080/catalog/product/" + productId,
         type: "get",
         //data用于接收服务器给予数据
-        success: function (data) {
+        success: function (res) {
             //输出查看是否正确
-            console.log("Hello Product");
-            console.log(data);
-            $("#productName").text(data.name);
+            console.log(res);
+            $("#productName").text(res.data.name);
         },
         error: function () {
             alert("Error")
@@ -28,16 +27,15 @@ $(function () {
     $.ajax({
         url: "http://localhost:8080/catalog/product/" + productId + "/items",
         type: "get",
-        success: function (data) {
-            console.log("Hello Items");
-            console.log(data);
+        success: function (res) {
+            console.log(res);
+            const data = res.data;
             for (let i = 0; i < data.length; i++) {
-                dataHtml = "<tr><td><a href='../../views/catalog/Item.html?itemId=>" + data[i].itemId + "'></a>" + "&productId=" + productId +
-                    "</td><td>" + data[i].name + "</td>" +
-                    "<td>" + productId + "</td>" +
-                    "<td>" + data[i].attribute1 + " " + data[i].attribute2 + " " + "</td>" +
+                dataHtml = "<tr><td><a href='Item.html?itemId=" + data[i].itemId + "&productId=" + productId + "'>"+data[i].itemId +"</a></td>" +
+                    "<td>" + data[i].product.name + "</td>" +
+                    "<td>" + productId + data[i].attribute1 + "</td>" +
                     "<td>" + data[i].listPrice + "</td>" +
-                    "<td>" + "<a href='../../views/cart/Cart.html?workingItemId='" + data[i].itemId + "'>Add to Cart</a>" + "</td>" +
+                    "<td>" + "<a class='button' href='../cart/Cart.html?workingItemId='" + data[i].itemId + "'>Add to Cart</a>" + "</td>" +
                     "</tr>";
                 console.log(dataHtml);
                 $("#itemList").append(dataHtml);

@@ -4,14 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <link rel="StyleSheet" href="http://localhost:8080/jpetstore/static/css/jpetstore.css" type="text/css"
-          media="screen"/>
-
-    <meta name="generator"
-          content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
-    <title>JPetStore Demo</title>
-    <meta content="text/html; charset=utf-8"
-          http-equiv="Content-Type"/>
+    <link rel="StyleSheet" href="../../css/jpetstore.css" type="text/css" media="screen"/>
+    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
+    <title>Product</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <meta http-equiv="Cache-Control" content="max-age=0"/>
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta http-equiv="expires" content="0"/>
@@ -20,7 +16,6 @@
 </head>
 
 <body>
-
 <div id="Header">
     <div id="Logo">
         <div id="LogoContent">
@@ -40,7 +35,7 @@
             <img align="middle" alt="separator" src="../../images/separator.gif"/>
             <a href="../account/EditAccountForm.html">My Account</a>
             <img align="middle" alt="separator" src="../../images/separator.gif"/>
-            <a href="http://localhost:8080/jpetstore/help.html">?</a>
+            <a href="../../help.html">?</a>
         </div>
     </div>
 
@@ -93,18 +88,7 @@
             </thead>
             <!-- list -->
             <tbody id="itemList">
-            <tr>
-                <td id="itemId"><a href="#">EST-16</a></td>
-                <td>FL-DLH-02</td>
-                <td>Adult Female Persian</td>
-                <td>$93.50</td>
-                <td><a id="toCart" class="Button" href="../cart/Cart.html">Add to Cart</a></td>
-                <script type="text/javascript">
-                    const itemId = $('#itemId').text;
-                    console.log(itemId);
-                    $('#toCart').href = "../cart/Cart.html?workingItemId=" + itemId;
-                </script>
-            </tr>
+
             </tbody>
 
         </table>
