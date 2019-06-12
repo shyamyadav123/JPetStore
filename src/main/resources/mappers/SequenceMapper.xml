@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="persistence.SequenceDAO">
+<mapper namespace="org.csu.jpetstore.persistence.SequenceMapper">
 
-    <cache/>
+  <cache />
 
-    <select id="getSequence" parameterType="sequence" resultType="domain.Sequence">
-        SELECT
-            name,
-            nextid
-        FROM SEQUENCE
-        WHERE NAME = #{name}
-    </select>
+  <select id="getSequence" parameterType="org.csu.jpetstore.domain.Sequence" resultType="org.csu.jpetstore.domain.Sequence">
+    SELECT name, nextid
+    FROM SEQUENCE
+    WHERE NAME = #{name}
+  </select>
 
-    <update id="updateSequence" parameterType="domain.Sequence">
-        UPDATE SEQUENCE
-        SET NEXTID = #{nextId}
-        WHERE NAME = #{name}
-    </update>
+  <update id="updateSequence" parameterType="org.csu.jpetstore.domain.Sequence">
+    UPDATE SEQUENCE
+    SET NEXTID = #{nextId}
+    WHERE NAME = #{name}
+  </update>
 
 </mapper>
