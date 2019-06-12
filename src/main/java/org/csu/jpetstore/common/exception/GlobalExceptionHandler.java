@@ -44,7 +44,7 @@ public class GlobalExceptionHandler extends BaseGlobalExceptionHandler{
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public DefaultErrorResult handleBindException(MethodArgumentNotValidException e, HttpServletRequest request) {
-        return super.handleMethodArgumentNotValidExceptionn(e, request);
+        return super.handleMethodArgumentNotValidException(e, request);
     }
 
     /* 处理500类异常 */
