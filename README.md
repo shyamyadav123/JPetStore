@@ -6,7 +6,8 @@ Restful重构JPetStore
 这次是很认真的了，会尽量地遵循Rest的规范以及一些企业开发的内容，其中主要包括:
 1. 统一的接口响应数据格式 (将错误的响应信息重新封装)
 2. 使用切面对Controller统一的日志打印(如果是Controller的话其实拦截器也可以实现的)
-3. 切面统一的异常处理
+3. ControllerAdvice统一的异常处理
+4. 用token来管理登录，虽然是browser可以用session，但是这里还是用token
 
 概括就是简化Controller的编写
 
