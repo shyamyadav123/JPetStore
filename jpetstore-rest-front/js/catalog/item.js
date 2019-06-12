@@ -28,6 +28,7 @@ $(function () {
                 "<tr><td>" + data.item.listPrice + "</td></tr>" +
                 "<tr><td><a class='button' href='../../views/cart/Cart.html?workingItemId=" + itemId + "'>Add to Cart</a></td></tr>" +
                 "</tbody>";
+            console.log(dataHtml);
             $("#itemInfo").append(dataHtml);
         },
         error: function () {

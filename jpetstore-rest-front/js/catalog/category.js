@@ -33,6 +33,7 @@ $(function () {
                 dataHtml = "<tr><td><a href='../../views/catalog/Product.html?productId=" 
                 + data[i].productId + "&categoryId=" + categoryId + "'>" +
                     "</a></td><td>" + data[i].name + "</td></tr>";
+                console.log(dataHtml);
                 $("#productList").append(dataHtml);
             }
         },

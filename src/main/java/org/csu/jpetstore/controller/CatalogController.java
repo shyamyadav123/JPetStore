@@ -29,4 +29,20 @@ public class CatalogController {
         return PlatformResult.success(catalogService.getProductListByCategory(id));
     }
 
+    @GetMapping("/product/{id}")
+    public PlatformResult getProduct(@PathVariable("id") String id) {
+        return PlatformResult.success(catalogService.getProduct(id));
+    }
+
+    @GetMapping("/product/{id}/items")
+    public PlatformResult getItems(@PathVariable("id") String id) {
+        return PlatformResult.success(catalogService.getItemListByProduct(id));
+    }
+
+    @GetMapping("/item/{id}")
+    public PlatformResult getItem(@PathVariable("id") String id) {
+        return PlatformResult.success(catalogService.getItem(id));
+    }
+
+
 }
