@@ -37,4 +37,13 @@ public class CatalogControllerTest extends BaseTest {
         System.out.println(result.getResponse().getContentAsString());
     }
 
+    @Test
+    public void testGetProducts() throws Exception {
+        RequestBuilder builder = MockMvcRequestBuilders
+                .get("/catalog/category/FISH/products")
+                .accept(MediaType.APPLICATION_JSON);
+        MvcResult result = mvc.perform(builder).andReturn();
+        System.out.println(result.getResponse().getContentAsString());
+    }
+
 }

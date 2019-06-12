@@ -24,4 +24,9 @@ public class CatalogController {
         return PlatformResult.success(catalogService.getCategory(id));
     }
 
+    @GetMapping("/category/{id}/products")
+    public PlatformResult getProducts(@PathVariable("id") String id) {
+        return PlatformResult.success(catalogService.getProductListByCategory(id));
+    }
+
 }
