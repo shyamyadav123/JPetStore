@@ -1,6 +1,9 @@
 $(function () {
     //先从地址栏获取CategoryId
-    const categoryId = getQueryString("itemId");
+    const itemId = getQueryString("itemId");
+    const productId = getQueryString("productId");
+
+    $('#backToProduct').href = "Product.html?productId=" + productId;
 
     let dataHtml = "";
     //第二次ajax请求
@@ -19,12 +22,12 @@ $(function () {
             }
             dataHtml = "<tbody>" +
                 "<tr><td>" + data.product.description + "</td></tr>" +
-                "<tr><td><b>" + data.item.itemId + "</b></td></tr>" +
+                "<tr><td><b>" + itemId + "</b></td></tr>" +
                 "<tr><td><b><font size=\"4\">" + data.item.attribute1 + "</font></b></td></tr>" +
                 "<tr><td>" + data.product.name + "</td></tr>" +
                 quantityHtml +
                 "<tr><td>" + data.item.listPrice + "</td></tr>" +
-                "<tr><td><a class='button' href='../../views/cart/Cart.html?workingItemId='>" + data.item.itemId + "Add to Cart</a></td></tr>" +
+                "<tr><td><a class='button' href='../../views/cart/Cart.html?workingItemId='>" + itemId + "Add to Cart</a></td></tr>" +
                 "</tbody>";
             $("#itemInfo").append(dataHtml);
         },
