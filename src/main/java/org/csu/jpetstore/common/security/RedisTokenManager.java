@@ -1,9 +1,6 @@
 package org.csu.jpetstore.common.security;
 
-import jdk.nashorn.internal.parser.Token;
-import org.csu.jpetstore.uitls.RedisKeyUtil;
 import org.csu.jpetstore.uitls.RedisService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;

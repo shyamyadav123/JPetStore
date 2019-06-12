@@ -30,7 +30,7 @@ public class TokenController {
                                 @RequestParam("password") String password) {
         Account account = accountService.getAccount(username,password);
         if(account == null) {
-            return PlatformResult.success("Invalid username or password.  Login failed.");
+            return PlatformResult.failure("Invalid username or password.  Login failed.");
         }
         return PlatformResult.success(tokenManager.createToken(username));
     }

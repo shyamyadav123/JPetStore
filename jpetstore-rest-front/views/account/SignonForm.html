@@ -72,17 +72,19 @@
     <div id="Catalog">
         <form action="" method="post">
             <p>Please enter your username and password.</p>
+            <p id="loginMessage"></p>
             <p>
-                Username:<input type="text" name="username"/><br/>
-                Password:<input type="password" name="password"/><br/>
-                Validation Code:<input type="text" name="validationCode"/>
-                <img src="validation" id="imgservlet" onclick="reloadImage()"/>
-                <input type="button" value="changeImage" onclick="reloadImage()" id="btn">
+                Username:<input id="username" type="text" name="username"/><br/>
+                Password:<input id="password" type="password" name="password"/><br/>
+                <!--Validation Code:<input type="text" name="validationCode"/>-->
+                <!--<img src="validation" id="imgservlet" onclick="reloadImage()"/>-->
+                <!--<input type="button" value="changeImage" onclick="reloadImage()" id="btn">-->
             </p>
-            <input type="button" name="signIn" value="Login"/>
+            <input id="loginButton" type="button" name="signIn" value="Login"/>
         </form>
+        <a id="toMain"></a>
 
-        Need a user name and password? <a href="NewAccountForm.html">Register Now!</a>
+        Need a username and password? <a href="NewAccountForm.html">Register Now!</a>
 
     </div>
 
@@ -101,7 +103,7 @@
 <script type="text/javascript" src="../../plugins/jquery/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../../plugins/json/jquery.json.min.js"></script>
 <script type="text/javascript" src="../../js/common/common.js"></script>
-<script type="text/javascript" src="../../js/catalog/category.js"></script>
+<script type="text/javascript" src="../../js/account/signIn.js"></script>
 </body>
 </html>
 

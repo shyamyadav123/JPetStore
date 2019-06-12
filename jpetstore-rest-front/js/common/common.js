@@ -59,3 +59,7 @@ function setItems(a) {
 function selectItem(target) {
     $("#searchInput").val(target.innerText);
 }
+
+function getAuthorization() {
+    return sessionStorage.getItem("jpet-authorization");
+}
