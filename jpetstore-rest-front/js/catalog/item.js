@@ -3,7 +3,8 @@ $(function () {
     const itemId = getQueryString("itemId");
     const productId = getQueryString("productId");
 
-    $('#backToProduct').href = "Product.html?productId=" + productId;
+    let backToProductHref = "Product.html?productId=" + productId;
+    $('#backToProduct').attr('href', backToProductHref);
 
     let dataHtml = "";
     //第二次ajax请求

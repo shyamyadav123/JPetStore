@@ -11,8 +11,8 @@ $(function () {
             const data = res.data;
             for (let i = 0; i < data.length; i++) {
                 dataHtml = "<tr>" +
-                    "<td><a href='Product.html?productId=" + data[i].productId + "&categoryId=" + categoryId + "'>"+ data[i].description  + "</a></td>" +
-                    "<td><b><a href='Product.html?productId=" + data[i].productId + "&categoryId=" + categoryId + "'>" + data[i].productId + "</a></b></td>" +
+                    "<td><a href='Product.html?productId=" + data[i].productId + "&categoryId=" + data[i].categoryId + "'>"+ data[i].description  + "</a></td>" +
+                    "<td><b><a href='Product.html?productId=" + data[i].productId + "&categoryId=" + data[i].categoryId + "'>" + data[i].productId + "</a></b></td>" +
                     "<td>" + data[i].name + "</td>" +
                     "</tr>";
                 console.log(dataHtml);

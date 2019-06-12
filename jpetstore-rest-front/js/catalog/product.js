@@ -3,7 +3,8 @@ $(function () {
     const productId = getQueryString("productId");
     const categoryId = getQueryString("categoryId");
 
-    $('#backToCategory').href = "Category.html?categoryId=" + categoryId;
+    let backToCategoryHref = "Category.html?categoryId=" + categoryId;
+    $('#backToCategory').attr('href', backToCategoryHref);
 
     //第一次ajax请求
     $.ajax({
@@ -31,7 +32,7 @@ $(function () {
             console.log(res);
             const data = res.data;
             for (let i = 0; i < data.length; i++) {
-                dataHtml = "<tr><td><a href='Item.html?itemId=" + data[i].itemId + "&productId=" + productId + "'>"+data[i].itemId +"</a></td>" +
+                dataHtml = "<tr><td><a href='Item.html?itemId=" + data[i].itemId + "&productId=" + productId + "'>" + data[i].itemId + "</a></td>" +
                     "<td>" + data[i].product.name + "</td>" +
                     "<td>" + productId + data[i].attribute1 + "</td>" +
                     "<td>" + data[i].listPrice + "</td>" +
