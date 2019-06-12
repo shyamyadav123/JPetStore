@@ -5,7 +5,6 @@ $(function () {
     //第一次ajax请求
     $.ajax({
         url: "http://localhost:8080/jpetstore/catalog/category/" + categoryId,
-        dataType: 'json',
         type: "get",
         //data用于接收服务器给予数据
         success: function (data) {

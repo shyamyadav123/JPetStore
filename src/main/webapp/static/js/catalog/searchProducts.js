@@ -5,7 +5,6 @@ $(function () {
     let dataHtml = "";
     $.ajax({
         url: "http://localhost:8080/jpetstore/catalog/product/" + keywords + "/products",
-        dataType: 'json',
         type: "get",
         success: function (data) {
             console.log("Hello Search Product");

@@ -9,7 +9,6 @@ $(function () {
     //第二次ajax请求
     $.ajax({
         url: "http://localhost:8080/jpetstore/catalog/item/" + itemId,
-        dataType: 'json',
         type: "get",
         success: function (data) {
             console.log("Hello Item");

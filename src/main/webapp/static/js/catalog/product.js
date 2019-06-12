@@ -8,7 +8,6 @@ $(function () {
     //第一次ajax请求
     $.ajax({
         url: "http://localhost:8080/jpetstore/catalog/product/" + productId,
-        dataType: 'json',
         type: "get",
         //data用于接收服务器给予数据
         success: function (data) {
@@ -28,7 +27,6 @@ $(function () {
     //第二次ajax请求
     $.ajax({
         url: "http://localhost:8080/jpetstore/catalog/product/" + productId + "/items",
-        dataType: 'json',
         type: "get",
         success: function (data) {
             console.log("Hello Items");
