@@ -4,14 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <link rel="StyleSheet" href="http://localhost:8080/jpetstore/static/css/jpetstore.css" type="text/css"
-          media="screen"/>
-
-    <meta name="generator"
-          content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
+    <link rel="StyleSheet" href="../../css/jpetstore.css" type="text/css" media="screen"/>
+    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
     <title>JPetStore Demo</title>
-    <meta content="text/html; charset=utf-8"
-          http-equiv="Content-Type"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <meta http-equiv="Cache-Control" content="max-age=0"/>
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta http-equiv="expires" content="0"/>
@@ -20,55 +16,53 @@
 </head>
 
 <body>
-
 <div id="Header">
-
     <div id="Logo">
         <div id="LogoContent">
-            <a href="http://localhost:8080/jpetstore/static/views/catalog/Main.html">
-                <img src="http://localhost:8080/jpetstore/static/images/logo-topbar.gif"/></a>
+            <a href="../catalog/Main.html">
+                <img src="../../images/logo-topbar.gif" alt="logo-topbar"/></a>
         </div>
     </div>
 
     <div id="Menu">
         <div id="MenuContent">
             <!--<a href="viewCart">-->
-            <a href="http://localhost:8080/jpetstore/static/views/cart/Cart.html">
-                <img align="middle" name="img_cart" src="http://localhost:8080/jpetstore/static/images/cart.gif"/></a>
-            <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-            <a href="http://localhost:8080/jpetstore/static/views/account/SignonForm.html">Sign In</a>
+            <a href="../cart/Cart.html">
+                <img align="middle" alt="img_cart" src="../../images/cart.gif"/></a>
+            <img align="middle" alt="separator" src="../../images/separator.gif"/>
+            <a href="../account/SignonForm.html">Sign In</a>
             <a href="#">Sign Out</a>
-            <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-            <a href="http://localhost:8080/jpetstore/static/views/account/EditAccountForm.html">My Account</a>
-            <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
+            <img align="middle" alt="separator" src="../../images/separator.gif"/>
+            <a href="../account/EditAccountForm.html">My Account</a>
+            <img align="middle" alt="separator" src="../../images/separator.gif"/>
             <a href="http://localhost:8080/jpetstore/help.html">?</a>
         </div>
     </div>
 
     <div id="Search">
         <div id="SearchContent">
-            <form action="http://localhost:8080/jpetstore/static/views/catalog/SearchProducts.html" method="post">
-                <input type="text" name="keyword" size="14"/> <input
-                    type="submit" name="searchProducts" value="Search"/>
+            <form action="../catalog/SearchProducts.html" method="post">
+                <input type="text" name="keyword" size="14" title=""/>
+                <input id="search-button" type="button" name="searchProducts" value="Search"/>
             </form>
         </div>
     </div>
 
     <div id="QuickLinks">
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
-            <img src="http://localhost:8080/jpetstore/static/images/sm_fish.gif"/></a>
-        <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
-            <img src="http://localhost:8080/jpetstore/static/images/sm_dogs.gif"/></a>
-        <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
-            <img src="http://localhost:8080/jpetstore/static/images/sm_reptiles.gif"/></a>
-        <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
-            <img src="http://localhost:8080/jpetstore/static/images/sm_cats.gif"/></a>
-        <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
-            <img src="http://localhost:8080/jpetstore/static/images/sm_birds.gif"/></a>
+        <a href="../catalog/Category.html?categoryId=FISH">
+            <img src="../../images/sm_fish.gif" alt="Fish"/></a>
+        <img src="../../images/separator.gif" alt=""/>
+        <a href="../catalog/Category.html?categoryId=DOGS">
+            <img src="../../images/sm_dogs.gif" alt="Dogs"/></a>
+        <img src="../../images/separator.gif" alt=""/>
+        <a href="../catalog/Category.html?categoryId=REPTILES">
+            <img src="../../images/sm_reptiles.gif" alt="Reptiles"/></a>
+        <img src="../../images/separator.gif" alt=""/>
+        <a href="../catalog/Category.html?categoryId=CATS">
+            <img src="../../images/sm_cats.gif" alt="CATS"/></a>
+        <img src="../../images/separator.gif" alt=""/>
+        <a href="../catalog/Category.html?categoryId=BIRDS">
+            <img src="../../images/sm_birds.gif" alt="BIRDS"/></a>
     </div>
 </div>
 
@@ -86,7 +80,6 @@
                 <th>Product ID</th>
                 <th>Name</th>
             </tr>
-
         </table>
 
     </div>

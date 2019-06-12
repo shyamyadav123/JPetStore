@@ -34,12 +34,12 @@ $(function () {
             console.log("Hello Items");
             console.log(data);
             for (let i = 0; i < data.length; i++) {
-                dataHtml = "<tr><td><a href=\"../../views/catalog/Item.html\">" + data[i].itemId + "</a>" + "&productId=" + productId +
+                dataHtml = "<tr><td><a href='../../views/catalog/Item.html?itemId=>" + data[i].itemId + "'></a>" + "&productId=" + productId +
                     "</td><td>" + data[i].name + "</td>" +
                     "<td>" + productId + "</td>" +
                     "<td>" + data[i].attribute1 + " " + data[i].attribute2 + " " + "</td>" +
                     "<td>" + data[i].listPrice + "</td>" +
-                    "<td>" + "<a href=\"${ctx}/cart/addItemToCart?workingItemId=\"" + data[i].itemId + ">Add to Cart</a>" + "</td>" +
+                    "<td>" + "<a href='../../views/cart/Cart.html?workingItemId='" + data[i].itemId + "'>Add to Cart</a>" + "</td>" +
                     "</tr>";
                 console.log(dataHtml);
                 $("#itemList").append(dataHtml);

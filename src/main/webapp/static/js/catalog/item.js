@@ -27,7 +27,7 @@ $(function () {
                 "<tr><td>" + data.product.name + "</td></tr>" +
                 quantityHtml +
                 "<tr><td>" + data.item.listPrice + "</td></tr>" +
-                "<tr><td><a class='button' href='../../views/cart/Cart.html?workingItemId='>" + itemId + "Add to Cart</a></td></tr>" +
+                "<tr><td><a class='button' href='../../views/cart/Cart.html?workingItemId=" + itemId + "'>Add to Cart</a></td></tr>" +
                 "</tbody>";
             $("#itemInfo").append(dataHtml);
         },
