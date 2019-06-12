@@ -5,16 +5,16 @@ $(document).ready(function () {
         const password = $('#password').val();
 
         if(username == undefined || username == '') {
-            $('#loginMessage').text("Please input username and password");
+            $('#loginMessage').text("Please enter username and password");
             return;
         }
         if(password == undefined || password == '') {
-            $('#loginMessage').text("Please input username and password");
+            $('#loginMessage').text("Please enter username and password");
             return;
         }
 
         $.ajax({
-            url: "",
+            url: "http://localhost:8080/token",
             type: 'post',
             dataType: 'json',
             data: {
@@ -22,6 +22,7 @@ $(document).ready(function () {
                 password: password
             },
             success: function (res) {
+                console.log(res);
                 if(res.code == 1) {
                     const data = res.data;
                     // 保存token至sessionStorage
@@ -30,7 +31,7 @@ $(document).ready(function () {
                     // 跳转至main页面
                     let toMainHref = "../catalog/Main.html";
                     $('#toMain').attr('href', toMainHref);
-                    $('#toMain').click();
+                    document.getElementById('toMain').click();
                 } else {
                     $('#loginMessage').text(res.msg);
                 }

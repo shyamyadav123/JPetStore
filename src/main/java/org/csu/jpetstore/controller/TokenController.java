@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
  */
 @ResponseResult
 @RestController
+@CrossOrigin
 public class TokenController {
 
     @Autowired
