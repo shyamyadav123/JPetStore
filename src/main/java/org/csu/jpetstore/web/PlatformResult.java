@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * 平台通用返回结果
- *
  * @author: sun
  * @date: 2019/6/12
  */
