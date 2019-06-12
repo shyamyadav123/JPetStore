@@ -20,14 +20,6 @@
 
     <dependencies>
 
-        <!-- main framework begin -->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-        <!-- main framework end -->
-
         <!-- web begin -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,8 +40,16 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.1.1</version>
+            <version>2.0.1</version>
         </dependency>
+
+        <!-- aop begin -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>2.0.5.RELEASE</version>
+        </dependency>
+        <!-- aop end -->
 
         <!-- test begin -->
         <dependency>
