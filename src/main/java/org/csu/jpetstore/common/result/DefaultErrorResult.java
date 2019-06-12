@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.csu.jpetstore.common.exception.BusinessException;
+import org.csu.jpetstore.common.exception.ExceptionEnum;
 import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
@@ -91,6 +94,25 @@ public class DefaultErrorResult {
 //        result.setPath(RequestContextHolderUtil.getRequest().getRequestURI());
         result.setTimestamp(new Date());
         return result;
+    }
+
+    /**
+     * 根据自定义业务异常类来返回错误结果
+     * @param e
+     * @return
+     */
+    public static DefaultErrorResult failure(BusinessException e) {
+        ExceptionEnum ee = ExceptionEnum.getByEClass(e.getClass());
+        if (ee != null) {
+            return DefaultErrorResult.failure(ee.getResultCode(), e, ee.getHttpStatus(), e.getData());
+        }
+
+        DefaultErrorResult defaultErrorResult = DefaultErrorResult.failure(e.getResultCode() == null ?
+                ResultCode.SUCCESS : e.getResultCode(), e, HttpStatus.OK, e.getData());
+        if (!StringUtils.isEmpty(e.getMessage())) {
+            defaultErrorResult.setMessage(e.getMessage());
+        }
+        return defaultErrorResult;
     }
 
 }

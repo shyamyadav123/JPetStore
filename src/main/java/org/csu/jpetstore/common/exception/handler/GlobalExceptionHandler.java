@@ -1,7 +1,9 @@
 package org.csu.jpetstore.common.exception.handler;
 
+import org.csu.jpetstore.common.exception.BusinessException;
 import org.csu.jpetstore.common.result.DefaultErrorResult;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,12 +17,13 @@ import java.net.BindException;
 
 /**
  * 全局错误异常处理器
+ *
  * @author: sun
  * @date: 2019/6/12
  */
 @RestController
 @ControllerAdvice
-public class GlobalExceptionHandler extends BaseGlobalExceptionHandler{
+public class GlobalExceptionHandler extends BaseGlobalExceptionHandler {
 
     /* 处理400类异常 */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -55,5 +58,9 @@ public class GlobalExceptionHandler extends BaseGlobalExceptionHandler{
     }
 
     /* 处理自定义异常 */
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<DefaultErrorResult> handleBusinessException(BusinessException e, HttpServletRequest request) {
+        return super.handleBusinessException(e, request);
+    }
 
 }
