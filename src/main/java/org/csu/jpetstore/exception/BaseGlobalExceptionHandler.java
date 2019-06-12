@@ -1,6 +1,8 @@
-package org.csu.jpetstore.web;
+package org.csu.jpetstore.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.csu.jpetstore.web.DefaultErrorResult;
+import org.csu.jpetstore.web.ResultCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;

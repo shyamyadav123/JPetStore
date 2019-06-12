@@ -75,7 +75,7 @@ public class DefaultErrorResult {
     }
 
     /**
-     * 封装错误信息并返回
+     * 返回设置错误的结果
      * @param resultCode
      * @param e
      * @param httpStatus
