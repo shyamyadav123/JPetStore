@@ -29,17 +29,28 @@ public class TokenController {
     @PostMapping("/token")
     public PlatformResult login(@RequestParam("username") String username,
                                 @RequestParam("password") String password) {
-        Account account = accountService.getAccount(username,password);
-        if(account == null) {
+        Account account = accountService.getAccount(username, password);
+        if (account == null) {
             return PlatformResult.failure("Invalid username or password.  Login failed.");
         }
         return PlatformResult.success(tokenManager.createToken(username));
     }
 
     @Authorization
-    @DeleteMapping("/token")
-    public PlatformResult logout(@RequestParam("username") String username) {
-        tokenManager.deleteToken(username);
+    @DeleteMapping("/token/{id}")
+    public PlatformResult logout(@PathVariable("id") String id) {
+        tokenManager.deleteToken(id);
+        return PlatformResult.success();
+    }
+
+    /**
+     * 这里会有一个问题就是没登录操作的时候会不同的抛出异常
+     * @param id
+     * @return
+     */
+    @Authorization
+    @PutMapping("/token/{id}")
+    public PlatformResult update(@PathVariable("id") String id) {
         return PlatformResult.success();
     }
 
