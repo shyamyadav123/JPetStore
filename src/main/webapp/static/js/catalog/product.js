@@ -1,6 +1,9 @@
 $(function () {
     //先从地址栏获取CategoryId
     const productId = getQueryString("productId");
+    const categoryId = getQueryString("categoryId");
+
+    $('#backToCategory').href = "Category.html?categoryId=" + categoryId;
 
     //第一次ajax请求
     $.ajax({
@@ -31,12 +34,12 @@ $(function () {
             console.log("Hello Items");
             console.log(data);
             for (let i = 0; i < data.length; i++) {
-                dataHtml = "<tr><td><a href=\"../../views/catalog/Item.html\">" + data[i].itemId + "</a>" +
+                dataHtml = "<tr><td><a href=\"../../views/catalog/Item.html\">" + data[i].itemId + "</a>" + "&productId=" + productId +
                     "</td><td>" + data[i].name + "</td>" +
                     "<td>" + productId + "</td>" +
                     "<td>" + data[i].attribute1 + " " + data[i].attribute2 + " " + "</td>" +
                     "<td>" + data[i].listPrice + "</td>" +
-                    "<td>" + "<a href=\"${ctx}/cart/addItemToCart?workingItemId=\""+ data[i].itemId +">Add to Cart</a>" + "</td>" +
+                    "<td>" + "<a href=\"${ctx}/cart/addItemToCart?workingItemId=\"" + data[i].itemId + ">Add to Cart</a>" + "</td>" +
                     "</tr>";
                 console.log(dataHtml);
                 $("#itemList").append(dataHtml);

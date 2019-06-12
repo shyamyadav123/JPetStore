@@ -31,7 +31,8 @@ $(function () {
             console.log("Hello Products");
             console.log(data);
             for (let i = 0; i < data.length; i++) {
-                dataHtml = "<tr><td><a href=\"../../views/catalog/Product.html\">" + data[i].productId + "</a></td><td>" + data[i].name + "</td></tr>";
+                dataHtml = "<tr><td><a href=\"../../views/catalog/Product.html?productId=\">" + data[i].productId + "&categoryId=" + categoryId +
+                    "</a></td><td>" + data[i].name + "</td></tr>";
                 $("#productList").append(dataHtml);
             }
         },
