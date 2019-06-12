@@ -4,14 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <link rel="StyleSheet" href="http://localhost:8080/jpetstore/static/css/jpetstore.css" type="text/css"
-          media="screen"/>
-
-    <meta name="generator"
-          content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
+    <link rel="StyleSheet" href="../../css/jpetstore.css" type="text/css" media="screen"/>
+    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
     <title>JPetStore Demo</title>
-    <meta content="text/html; charset=utf-8"
-          http-equiv="Content-Type"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <meta http-equiv="Cache-Control" content="max-age=0"/>
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta http-equiv="expires" content="0"/>
@@ -20,53 +16,52 @@
 </head>
 
 <body>
-
 <div id="Header">
     <div id="Logo">
         <div id="LogoContent">
-            <a href="http://localhost:8080/jpetstore/static/views/catalog/Main.html">
-                <img src="http://localhost:8080/jpetstore/static/images/logo-topbar.gif"/></a>
+            <a href="../catalog/Main.html">
+                <img src="../../images/logo-topbar.gif" alt="logo-topbar"/></a>
         </div>
     </div>
 
     <div id="Menu">
         <div id="MenuContent">
             <!--<a href="viewCart">-->
-            <a href="http://localhost:8080/jpetstore/static/views/cart/Cart.html">
-                <img align="middle" name="img_cart" src="http://localhost:8080/jpetstore/static/images/cart.gif"/></a>
-            <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-            <a href="http://localhost:8080/jpetstore/static/views/account/SignonForm.html">Sign In</a>
+            <a href="../cart/Cart.html">
+                <img align="middle" alt="img_cart" src="../../images/cart.gif"/></a>
+            <img align="middle" alt="separator" src="../../images/separator.gif"/>
+            <a href="../account/SignonForm.html">Sign In</a>
             <a href="#">Sign Out</a>
-            <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-            <a href="http://localhost:8080/jpetstore/static/views/account/EditAccountForm.html">My Account</a>
-            <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
+            <img align="middle" alt="separator" src="../../images/separator.gif"/>
+            <a href="../account/EditAccountForm.html">My Account</a>
+            <img align="middle" alt="separator" src="../../images/separator.gif"/>
             <a href="http://localhost:8080/jpetstore/help.html">?</a>
         </div>
     </div>
 
     <div id="Search">
         <div id="SearchContent">
-            <form action="http://localhost:8080/jpetstore/static/views/catalog/SearchProducts.html" method="post">
-                <input type="text" name="keyword" size="14"/> <input
-                    type="submit" name="searchProducts" value="Search"/>
+            <form action="../catalog/SearchProducts.html" method="post">
+                <input type="text" name="keyword" size="14" title=""/>
+                <input id="search-button" type="button" name="searchProducts" value="Search"/>
             </form>
         </div>
     </div>
 
     <div id="QuickLinks">
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
+        <a href="../catalog/Category.html?categoryId=FISH">
             <img src="http://localhost:8080/jpetstore/static/images/sm_fish.gif"/></a>
         <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
+        <a href="../catalog/Category.html?categoryId=DOGS">
             <img src="http://localhost:8080/jpetstore/static/images/sm_dogs.gif"/></a>
         <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
+        <a href="../catalog/Category.html?categoryId=REPTILES">
             <img src="http://localhost:8080/jpetstore/static/images/sm_reptiles.gif"/></a>
         <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
+        <a href="../catalog/Category.html?categoryId=CATS">
             <img src="http://localhost:8080/jpetstore/static/images/sm_cats.gif"/></a>
         <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
+        <a href="../catalog/Category.html?categoryId=BIRDS">
             <img src="http://localhost:8080/jpetstore/static/images/sm_birds.gif"/></a>
     </div>
 </div>
@@ -74,14 +69,12 @@
 <div id="Content">
 
     <div id="BackLink">
-        <a href="http://localhost:8080/jpetstore/static/catalog/Main.html">Return to Main Menu</a>
+        <a href="../catalog/Main.html">Return to Main Menu</a>
     </div>
 
     <div id="Catalog">
-
         <!-- 对应下面ajax里面 -->
         <h2 id="categoryName">category name</h2>
-
         <table>
             <thead>
             <tr>
@@ -93,17 +86,13 @@
             <tbody id="productList">
 
             </tbody>
-
         </table>
-
     </div>
-
 </div>
 
 <div id="Footer">
 
-    <div id="PoweredBy">&nbsp<a href="www.csu.edu.cn">www.csu.edu.cn</a>
-    </div>
+    <div id="PoweredBy">&nbsp<a href="www.csu.edu.cn">www.csu.edu.cn</a></div>
 
     <div id="Banner">
         IncludeBottom.html
@@ -111,63 +100,11 @@
 
 </div>
 
-<script type="text/javascript" src="http://localhost:8080/jpetstore/static/js/jquery-3.4.1.min.js">
-</script>
-<script type="text/javascript">
-    // //获取url中的参数
-    // function GetQueryString(name) {
-    //    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-    //    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-    //    if (r != null) return unescape(r[2]); return null; //返回参数值
-    // }
-    //
-    //
-    // $(function(){
-    // 	//先从地址栏获取CategoryId
-    // 	var categoryId=GetQueryString("categoryId");
-    //
-    // 	//第一次ajax请求
-    // 	$.ajax({
-    // 		url:""http://localhost:8080/catalog/category/"+categoryId,
-    // 		type:"get",
-    // 		//data用于接收服务器给予数据
-    // 		success: function(data){
-    // 			//输出查看是否正确
-    // 			console.log("Hello Category")
-    // 			console.log(data)
-    //
-    // 			$("#categoryName").text(data.name)
-    //
-    // 		},
-    // 		error: function(){
-    // 			alert("Error")
-    // 			//类似java异常处理
-    // 		}
-    // 	});
-    // 	// alert(categoryId);
-    //
-    // 	var datahHtml="";
-    // 	//第二次ajax请求
-    // 	$.ajax({
-    // 		url:""http://localhost:8080/catalog/category/"+categoryId+"/products",
-    // 		type:"get",
-    // 		success: function(data){
-    // 			console.log("Hello products")
-    // 			console.log(data)
-    // 			for(var i=0;i<data.length;i++){
-    // 				datahHtml="<tr><td><a href=\"Product.html\">"+data[i].productId+"</a></td><td>"+data[i].name+"</td></tr>";
-    // 				$("#productList").append(datahHtml);
-    //
-    // 			}
-    //
-    // 		},
-    // 		error: function(){
-    // 			alert("Error")
-    // 		}
-    //
-    // 	});
-    // })
-</script>
+<script type="text/javascript" src="../../plugins/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../plugins/json/jquery.json.min.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script type="text/javascript" src="../../js/catalog/category.js"></script>
+
 </body>
 </html>
 
