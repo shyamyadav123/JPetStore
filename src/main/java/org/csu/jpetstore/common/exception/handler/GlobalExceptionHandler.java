@@ -1,4 +1,4 @@
-package org.csu.jpetstore.common.exception;
+package org.csu.jpetstore.common.exception.handler;
 
 import org.csu.jpetstore.common.result.DefaultErrorResult;
 import org.springframework.http.HttpStatus;
