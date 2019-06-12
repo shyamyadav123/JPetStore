@@ -22,7 +22,7 @@ public class TokenModel {
     private String token;
 
     // 创建的时间
-    private Timestamp createTime;
+    private Timestamp timestamp;
 
 
 }

@@ -1,5 +1,6 @@
 package org.csu.jpetstore;
 
+import org.csu.jpetstore.common.security.TokenModel;
 import org.csu.jpetstore.uitls.RedisKeyUtil;
 import org.csu.jpetstore.uitls.RedisService;
 import org.junit.Test;
@@ -7,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -99,5 +103,17 @@ public class RedisTest extends BaseTest {
 //        System.out.println(listOperations.leftPop("list:user"));
         // pop之后 值会消失
         System.out.println(listOperations.leftPop("list:user"));
+    }
+
+    @Test
+    public void test() {
+        String userId = "123";
+        String token = UUID.randomUUID().toString().replace("-", "");
+        TokenModel model = new TokenModel(userId, token, new Timestamp(new Date().getTime()));
+        // 存储到redis并设置过期时间
+        redisTemplate.boundValueOps("user-token:" + userId).set(model, 7200, TimeUnit.SECONDS);
+        System.out.println(valueOperations.get("user-token:" + userId));
+        redisTemplate.boundValueOps("user-token:" + userId).set(123, 7200, TimeUnit.SECONDS);
+        System.out.println(valueOperations.get("user-token:" + userId));
     }
 }
