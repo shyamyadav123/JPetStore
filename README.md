@@ -1,4 +1,6 @@
 #### Introduction
+如果不优美，那就重来
+
 Restful重构JPetStore
 
 这次是很认真的了，会尽量地遵循Rest的规范以及一些企业开发的内容，其中主要包括:
