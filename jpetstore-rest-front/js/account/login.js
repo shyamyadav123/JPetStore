@@ -10,7 +10,7 @@ $(document).ready(function () {
             $('#SignInInfo').text("Please enter verify code");
             on_submit = false;
         }
-        if (on_submit===true) {
+        if (on_submit === true) {
             if (userId === "" || userId === null) {
                 $('#SignInInfo').text("Please enter username!");
                 on_submit = false;
@@ -21,7 +21,7 @@ $(document).ready(function () {
             }
         }
 
-        if (on_submit===true) {
+        if (on_submit === true) {
             $.ajax({
                 url: 'ajax_login',
                 method: "post",
@@ -41,6 +41,5 @@ $(document).ready(function () {
                 }
             })
         }
-
     });
 });
