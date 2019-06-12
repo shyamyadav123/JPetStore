@@ -1,13 +1,10 @@
 package org.csu.jpetstore.controller;
 
+import org.csu.jpetstore.common.result.PlatformResult;
 import org.csu.jpetstore.common.result.ResponseResult;
-import org.csu.jpetstore.domain.Category;
 import org.csu.jpetstore.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: sun
@@ -16,14 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 @ResponseResult
 @RestController
 @RequestMapping("/catalog")
+@CrossOrigin
 public class CatalogController {
 
     @Autowired
     private CatalogService catalogService;
 
     @GetMapping("/category/{id}")
-    public Category getCategory(@PathVariable("id") String id) {
-        return catalogService.getCategory(id);
+    public PlatformResult getCategory(@PathVariable("id") String id) {
+        return PlatformResult.success(catalogService.getCategory(id));
     }
 
 }
