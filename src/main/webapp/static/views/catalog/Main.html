@@ -21,55 +21,53 @@
 <body>
 
 <div id="Header">
-
     <div id="Logo">
         <div id="LogoContent">
-            <a href="main"><img src="http://localhost:8080/jpetstore/static/images/logo-topbar.gif"/></a>
+            <a href="http://localhost:8080/jpetstore/static/views/catalog/Main.html">
+                <img src="http://localhost:8080/jpetstore/static/images/logo-topbar.gif"/></a>
         </div>
     </div>
 
     <div id="Menu">
         <div id="MenuContent">
-            <a href="viewCart">
-                <img align="middle" name="img_cart" src="http://localhost:8080/jpetstore/static/images/cart.gif"/>
-            </a>
+            <!--<a href="viewCart">-->
+            <a href="http://localhost:8080/jpetstore/static/views/cart/Cart.html">
+                <img align="middle" name="img_cart" src="http://localhost:8080/jpetstore/static/images/cart.gif"/></a>
             <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-            <a href="http://localhost:8080/jpetstore/static/account/SignonForm.html">Sign In</a>
+            <a href="http://localhost:8080/jpetstore/static/views/account/SignonForm.html">Sign In</a>
             <a href="#">Sign Out</a>
             <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-            <a href="http://localhost:8080/jpetstore/static/account/EditAccountForm.html">My Account</a>
+            <a href="http://localhost:8080/jpetstore/static/views/account/EditAccountForm.html">My Account</a>
             <img align="middle" src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-            <a href="http://localhost:8080/jpetstore/static/help.html">?</a>
+            <a href="http://localhost:8080/jpetstore/help.html">?</a>
         </div>
     </div>
 
     <div id="Search">
         <div id="SearchContent">
-            <form action="http://localhost:8080/jpetstore/static/catalog/SearchProducts.html" method="post">
-                <input type="text" name="keyword" size="14"/>
-                <input type="submit" name="searchProducts" value="Search"/>
+            <form action="http://localhost:8080/jpetstore/static/views/catalog/SearchProducts.html" method="post">
+                <input type="text" name="keyword" size="14"/> <input
+                    type="submit" name="searchProducts" value="Search"/>
             </form>
         </div>
     </div>
 
     <div id="QuickLinks">
-        <a href="http://localhost:8080/jpetstore/static/catalog/Category.html"><img
-                src="http://localhost:8080/jpetstore/static/images/sm_fish.gif"/></a>
+        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
+            <img src="http://localhost:8080/jpetstore/static/images/sm_fish.gif"/></a>
         <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/catalog/Category.html">
-            <img src="http://localhost:8080/jpetstore/static/images/sm_dogs.gif"/>
-        </a>
+        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
+            <img src="http://localhost:8080/jpetstore/static/images/sm_dogs.gif"/></a>
         <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/catalog/Category.html">
-            <img src="http://localhost:8080/jpetstore/static/images/sm_reptiles.gif"/>
-        </a> <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/catalog/Category.html">
+        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
+            <img src="http://localhost:8080/jpetstore/static/images/sm_reptiles.gif"/></a>
+        <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
+        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
             <img src="http://localhost:8080/jpetstore/static/images/sm_cats.gif"/></a>
         <img src="http://localhost:8080/jpetstore/static/images/separator.gif"/>
-        <a href="http://localhost:8080/jpetstore/static/catalog/Category.html">
+        <a href="http://localhost:8080/jpetstore/static/views/catalog/Category.html">
             <img src="http://localhost:8080/jpetstore/static/images/sm_birds.gif"/></a>
     </div>
-
 </div>
 
 <div id="Content">
@@ -107,7 +105,8 @@
                     <area alt="Cats" coords="225,240,295,310" href="Category.html" shape="rect"/>
                     <area alt="Birds" coords="280,180,350,250" href="Category.html?categoryId=Birds" shape="rect"/>
                 </map>
-                <img height="355" src="http://localhost:8080/jpetstore/static/images/splash.gif" align="middle" usemap="#estoremap"
+                <img height="355" src="http://localhost:8080/jpetstore/static/images/splash.gif" align="middle"
+                     usemap="#estoremap"
                      width="350"/>
             </div>
         </div>
