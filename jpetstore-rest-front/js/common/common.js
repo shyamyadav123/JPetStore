@@ -17,21 +17,26 @@ $(document).ready(function () {
             type: 'put',
             success: function (res) {
                 // 按照登录状态渲染页面
-                $('#headerSignIn').hide();
-                $('#headerSignOut').show();
-                $.ajax({
-                    url: "http://localhost:8080/account/" + getUserId(),
-                    type: 'get',
-                    success: function (res) {
-                        console.log(res);
-                        if (res.code == 1) {
-                            const data = res.data;
-                            if (data.bannerOption) {
-                                $('#Banner').html(data.bannerName);
+                if (res.code == 1) {
+                    $('#headerSignIn').hide();
+                    $('#headerSignOut').show();
+                    $.ajax({
+                        url: "http://localhost:8080/account/" + getUserId(),
+                        type: 'get',
+                        success: function (res1) {
+                            console.log(res1);
+                            if (res1.code == 1) {
+                                const data = res1.data;
+                                if (data.bannerOption) {
+                                    $('#Banner').html(data.bannerName);
+                                }
                             }
+                        },
+                        beforeSend: function (request) {
+                            request.setRequestHeader('Authorization', auth);
                         }
-                    }
-                })
+                    })
+                }
             },
             error: function () {
                 // 按照未登录状态渲染页面
@@ -39,10 +44,15 @@ $(document).ready(function () {
                 $('#headerSignOut').hide();
                 $('#Banner').empty();
             },
-            before: function (request) {
+            beforeSend: function (request) {
                 request.setRequestHeader('Authorization', auth);
             }
         })
+    } else {
+        // 按照未登录状态渲染页面
+        $('#headerSignIn').show();
+        $('#headerSignOut').hide();
+        $('#Banner').empty();
     }
 
 
