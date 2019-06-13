@@ -55,6 +55,23 @@ $(document).ready(function () {
         $('#Banner').empty();
     }
 
+    $('#headerSignOut').click(function () {
+        $.ajax({
+            url: "http://localhost:8080/token/" + getAuthorization(),
+            type: "delete",
+            success: function (res) {
+                if (res.code == 1) {
+                    sessionStorage.setItem("jpet-authorizaion", "");
+                    $('#headerSignOut').attr('href', '../catalog/Main.html');
+                    document.getElementById('headerSignOut').click();
+                }
+            },
+            error: function () {
+
+            }
+        })
+    });
+
 
     $('#searchButton').click(function () {
         let action = $('#searchForm').attr("action");

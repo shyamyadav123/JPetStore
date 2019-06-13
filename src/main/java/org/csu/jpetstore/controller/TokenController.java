@@ -9,8 +9,6 @@ import org.csu.jpetstore.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotNull;
-
 /**
  * @author: sun
  * @date: 2019/6/12
