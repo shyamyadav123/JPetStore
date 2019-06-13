@@ -110,6 +110,10 @@ function getAuthorization() {
     return sessionStorage.getItem("jpet-authorization");
 }
 
+function getCart() {
+    return sessionStorage.getItem("jpet-cart");
+}
+
 function getUserId() {
     const auth = getAuthorization();
     if (auth != undefined && auth != '') {
