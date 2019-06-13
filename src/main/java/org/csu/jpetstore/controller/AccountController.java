@@ -4,9 +4,12 @@ import org.csu.jpetstore.common.exception.BusinessException;
 import org.csu.jpetstore.common.result.PlatformResult;
 import org.csu.jpetstore.common.result.ResponseResult;
 import org.csu.jpetstore.common.security.Authorization;
+import org.csu.jpetstore.common.validation.groups.CreateGroup;
 import org.csu.jpetstore.domain.Account;
 import org.csu.jpetstore.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -46,14 +49,11 @@ public class AccountController {
     }
 
     @PostMapping("")
-    public PlatformResult createAccount(@RequestParam("username") String username,
-                                        @RequestParam("password") String password) {
-        if(accountService.getAccount(username) != null) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public PlatformResult createAccount(@Validated(CreateGroup.class) @RequestBody Account account) {
+        if(accountService.getAccount(account.getUsername()) != null) {
             throw new BusinessException("Account is exist");
         }
-        Account account = new Account();
-        account.setUsername(username);
-        account.setPassword(password);
         account.setFavouriteCategoryId("CATS");
         account.setLanguagePreference("english");
         accountService.insertAccount(account);
