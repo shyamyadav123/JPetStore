@@ -7,6 +7,7 @@ $(document).ready(function () {
             return;
         }
         if (!usernameIsExist()) {
+            $.ajaxSetup({dataType: 'json'});
             $.ajax({
                 url: "http://localhost:8080/account/",
                 type: "POST",
