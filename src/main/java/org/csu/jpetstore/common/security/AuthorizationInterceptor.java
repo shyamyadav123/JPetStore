@@ -1,6 +1,7 @@
 package org.csu.jpetstore.common.security;
 
 import org.csu.jpetstore.common.exception.PermissionForbiddenException;
+import org.csu.jpetstore.common.exception.UserNotLoginException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -44,7 +45,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         }
         // 如果验证 token 失败，并且方法注明了 Authorization，返回 401 错误
         if (method.getAnnotation (Authorization.class) != null) {
-            throw new PermissionForbiddenException("Please login first");
+            throw new UserNotLoginException("Please login first");
         }
         return true;
     }
