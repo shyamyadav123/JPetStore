@@ -116,6 +116,8 @@
 
     <div id="Catalog">
 
+        <p id="newAccountMessage"></p>
+        <a id="redirect"></a>
         <form action="../catalog/Main.html" method="post" name="userInfo" id="userInfo">
 
             <h3>User Information</h3>
@@ -123,24 +125,21 @@
             <table>
                 <tr>
                     <td>User ID:</td>
-                    <td>
-                        <input type="text" name="username" id="username" onblur="usernameIsExist();"/>
+                    <td><input id="username" type="text" name="username" id="username" onblur="usernameIsExist();"/>
                         <div id="usernameInfo"></div>
                     </td>
                 </tr>
                 <tr>
                     <td>New password:</td>
-                    <td><input type="password" name="password"/></td>
+                    <td><input id="password" type="password" name="password"/></td>
                 </tr>
                 <tr>
                     <td>Repeat password:</td>
-                    <td><input type="password" name="repeatedPassword"/></td>
+                    <td><input id="repeatedPassword" type="password" name="repeatedPassword"/></td>
                 </tr>
             </table>
 
-            <include file="IncludeAccountFields.html"/>
-
-            <input type="submit" name="newAccount" value="Save Account Information"/>
+            <input id="newAccount" class="button" type="button" name="newAccount" value="Save Account Information"/>
 
         </form>
     </div>
@@ -160,7 +159,8 @@
 <script type="text/javascript" src="../../plugins/jquery/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../../plugins/json/jquery.json.min.js"></script>
 <script type="text/javascript" src="../../js/common/common.js"></script>
-<script type="text/javascript" src="../../js/catalog/category.js"></script>
+<script type="text/javascript" src="../../js/account/account.js"></script>
+<script type="text/javascript" src="../../js/account/register.js"></script>
 
 </body>
 </html>

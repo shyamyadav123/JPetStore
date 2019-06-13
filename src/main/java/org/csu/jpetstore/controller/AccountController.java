@@ -34,4 +34,15 @@ public class AccountController {
         return PlatformResult.success(accountService.getAccount(account.getUsername()));
     }
 
+    @Authorization
+    @PostMapping("")
+    public PlatformResult createAccount(@RequestParam("username") String useranme,
+                                        @RequestParam("password") String password) {
+        Account account = new Account();
+        account.setUsername(useranme);
+        account.setPassword(password);
+        accountService.insertAccount(account);
+        return PlatformResult.success(accountService.getAccount(account.getUsername()));
+    }
+
 }
