@@ -23,26 +23,29 @@ $(document).ready(function () {
             $('#editAccountMessage').text("password and repeatedPassword is not equal");
             return;
         }
-        $('#editAccountForm').attr('action', 'http://localhost:8080/account/' + $('#username').text());
-        $('#editAccountForm').attr('method', 'put');
-        $('#editAccountForm').submit();
-        getUserInfo();
-        // $.ajax({
-        //     url: "http://localhost:8080/account/" + $('#username').text(),
-        //     type: "put",
-        //     dataType: 'json',
-        //     data: {},
-        //     success: function (res) {
-        //         if (res.code == 1) {
-        //             renderPage(res.data)
-        //         } else {
-        //             $('#editAccountMessage').text(res.msg);
-        //         }
-        //     },
-        //     error: function (res) {
-        //         $('#editAccountMessage').text(res.msg);
-        //     }
-        // })
+        // $('#editAccountForm').attr('action', 'http://localhost:8080/account/' + $('#username').text());
+        // $('#editAccountForm').attr('method', 'put');
+        // $('#editAccountForm').submit();
+        // getUserInfo();
+        $.ajax({
+            url: "http://localhost:8080/account/" + $('#username').text(),
+            type: "put",
+            dataType: 'json',
+            data: $('#editAccountForm').serialize(),
+            success: function (res) {
+                if (res.code == 1) {
+                    renderPage(res.data)
+                } else {
+                    $('#editAccountMessage').text(res.msg);
+                }
+            },
+            error: function (res) {
+                $('#editAccountMessage').text(res.msg);
+            },
+            beforeSend: function (request) {
+                request.setRequestHeader('Authorization', getAuthorization());
+            }
+        })
     })
 });
 
@@ -65,7 +68,7 @@ function getUserInfo() {
             document.getElementById('redirect').click();
         },
         beforeSend: function (request) {
-            request.setRequestHeader("Authorization", auth);
+            request.setRequestHeader("Authorization", getAuthorization());
         }
 
     })
