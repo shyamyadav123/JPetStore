@@ -3,18 +3,22 @@ package org.csu.jpetstore.common.exception.handler;
 import lombok.extern.slf4j.Slf4j;
 import org.csu.jpetstore.common.exception.BusinessException;
 import org.csu.jpetstore.common.result.DefaultErrorResult;
+import org.csu.jpetstore.common.result.ParameterInvalidItem;
+import org.csu.jpetstore.common.result.ParameterInvalidItemHelper;
 import org.csu.jpetstore.common.result.ResultCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
-import java.net.BindException;
+import java.util.List;
 
 /**
  * 全局异常处理基础类
+ *
  * @author: sun
  * @date: 2019/6/12
  */
@@ -28,11 +32,14 @@ public class BaseGlobalExceptionHandler {
      */
     protected DefaultErrorResult handleConstraintViolationException(ConstraintViolationException e, HttpServletRequest request) {
         log.info("handleConstraintViolationException start, uri:{}, caused by: ", request.getRequestURI(), e);
-        return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST);
+        List<ParameterInvalidItem> parameterInvalidItemList =
+                ParameterInvalidItemHelper.convertCVSetToParameterInvalidItemList(e.getConstraintViolations());
+        return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
     }
 
     /**
      * 处理验证参数封装错误时异常
+     *
      * @param e
      * @return
      */
@@ -46,7 +53,9 @@ public class BaseGlobalExceptionHandler {
      */
     protected DefaultErrorResult handleBindException(BindException e, HttpServletRequest request) {
         log.info("handleBindException start, uri:{}, caused by: ", request.getRequestURI(), e);
-        return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST);
+        List<ParameterInvalidItem> parameterInvalidItemList =
+                ParameterInvalidItemHelper.convertBindingResultToMapParameterInvalidItemList(e.getBindingResult());
+        return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
     }
 
     /**
@@ -54,7 +63,9 @@ public class BaseGlobalExceptionHandler {
      */
     protected DefaultErrorResult handleMethodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest request) {
         log.info("handleMethodArgumentNotValidException start, uri:{}, caused by: ", request.getRequestURI(), e);
-        return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST);
+        List<ParameterInvalidItem> parameterInvalidItemList =
+                ParameterInvalidItemHelper.convertBindingResultToMapParameterInvalidItemList(e.getBindingResult());
+        return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
     }
 
     /**
@@ -74,7 +85,7 @@ public class BaseGlobalExceptionHandler {
      * 处理运行时系统异常 500
      */
     protected DefaultErrorResult handleRuntimeException(RuntimeException e, HttpServletRequest request) {
-        log.info("handleRuntimeException start, uri:{}, caused by: ", request.getRequestURI(), e);
+        log.error("handleRuntimeException start, uri:{}, caused by: ", request.getRequestURI(), e);
         return DefaultErrorResult.failure(ResultCode.SYSTEM_INNER_ERROR, e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
