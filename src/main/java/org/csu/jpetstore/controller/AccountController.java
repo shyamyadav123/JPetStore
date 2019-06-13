@@ -54,6 +54,8 @@ public class AccountController {
         Account account = new Account();
         account.setUsername(username);
         account.setPassword(password);
+        account.setFavouriteCategoryId("CATS");
+        account.setLanguagePreference("english");
         accountService.insertAccount(account);
         return PlatformResult.success(accountService.getAccount(account.getUsername()));
     }
