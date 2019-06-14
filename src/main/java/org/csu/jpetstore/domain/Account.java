@@ -1,6 +1,7 @@
 package org.csu.jpetstore.domain;
 
 import lombok.Data;
+import org.csu.jpetstore.common.validation.EnumValue;
 import org.csu.jpetstore.common.validation.groups.CreateGroup;
 import org.hibernate.validator.constraints.Length;
 
@@ -26,6 +27,7 @@ public class Account implements Serializable {
     private String email;
     private String firstName;
     private String lastName;
+    @EnumValue(enumClass = UserStatusEnum.class, enumMethod = "isValidName", groups = CreateGroup.class)
     private String status;
     private String address1;
     private String address2;
@@ -43,42 +45,49 @@ public class Account implements Serializable {
     private boolean authenticated;
 
     /**
-     * 账号状态枚举
+     * 用户状态枚举
      */
-    public enum StatusEnum {
-        NORMAL(0, "正常"),
-        SUSPENDED(1, "停用"),
-        DELETED(2, "已删除");
+    public enum UserStatusEnum {
+        /**
+         * 正常的
+         */
+        NORMAL(1, "Normal"),
+        /**
+         * 禁用的
+         */
+        DISABLED(2, "Disable"),
+        /**
+         * 已删除的
+         */
+        DELETED(3, "Deleted");
 
-        private Integer code;
-        private String desc;
+        private int code;
+        private String value;
 
-        StatusEnum(Integer code, String desc) {
+        UserStatusEnum(int code, String value) {
             this.code = code;
-            this.desc = desc;
+            this.value = value;
         }
 
-        public Integer getCode() {
+        public int getCode() {
             return code;
         }
 
-        public String getDesc() {
-            return desc;
+        public String getValue() {
+            return value;
         }
 
-        public static boolean isValidCode(Integer code) {
-
-            if (code == null) {
-                return false;
-            }
-
-            for (StatusEnum status : StatusEnum.values()) {
-                if (status.getCode().equals(code)) {
+        /**
+         * 判断参数合法性
+         */
+        public static boolean isValidName(String code) {
+            for (UserStatusEnum userStatusEnum : UserStatusEnum.values()) {
+                if (userStatusEnum.getCode() == Integer.parseInt(code)) {
                     return true;
                 }
             }
             return false;
         }
-
     }
+
 }
