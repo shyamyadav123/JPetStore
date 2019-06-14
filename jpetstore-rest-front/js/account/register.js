@@ -7,15 +7,17 @@ $(document).ready(function () {
             return;
         }
         if (!usernameIsExist()) {
-            $.ajaxSetup({dataType: 'json'});
+            const sendData = JSON.stringify({
+                username: $('#username').val(),
+                password: $('#password').val(),
+            });
+            console.log($('#userInfo').serialize());
             $.ajax({
                 url: "http://localhost:8080/account/",
                 type: "POST",
+                contentType: 'application/json',
                 dataType: 'json',
-                data: {
-                    username: $('#username').val(),
-                    password: $('#password').val()
-                },
+                data: sendData,
                 success: function (res) {
                     if (res.code == 1) {
                         $('#redirect').attr('href', '../catalog/Main.html');
