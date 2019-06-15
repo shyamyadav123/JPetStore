@@ -33,7 +33,7 @@ $(document).ready(function () {
                     $('#toMain').attr('href', toMainHref);
                     document.getElementById('toMain').click();
                 } else {
-                    $('#loginMessage').text(res.msg);
+                    $('#loginMessage').text(res.message);
                 }
             },
             error:function () {

@@ -1,9 +1,9 @@
 package org.csu.jpetstore.common.config;
 
 import org.csu.jpetstore.common.result.ResponseResultInterceptor;
-import org.csu.jpetstore.common.security.Authorization;
 import org.csu.jpetstore.common.security.AuthorizationInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;

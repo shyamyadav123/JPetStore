@@ -33,6 +33,7 @@ public class AccountController {
     }
 
     @GetMapping("/{id}/status")
+    @ResponseStatus(HttpStatus.OK)
     public PlatformResult getAccountStatus(@PathVariable("id") String id) {
         Account account = accountService.getAccount(id);
         if (account != null) {
@@ -44,6 +45,7 @@ public class AccountController {
 
     @Authorization
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public PlatformResult updateAccount(@PathVariable("id") String id, @RequestBody Account account) {
         accountService.updateAccount(account);
         return PlatformResult.success(accountService.getAccount(account.getUsername()));

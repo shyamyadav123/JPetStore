@@ -34,7 +34,7 @@ $(document).ready(function () {
                     console.log(res);
                     res = JSON.parse(res);
                     if (res.status === false) {
-                        $('#SignInInfo').text(res.msg);
+                        $('#SignInInfo').text(res.message);
                     } else {
                         window.location = "/jpetstore/main";
                     }

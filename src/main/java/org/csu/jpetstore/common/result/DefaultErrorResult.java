@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.csu.jpetstore.common.exception.BusinessException;
 import org.csu.jpetstore.common.exception.ExceptionEnum;
+import org.csu.jpetstore.uitls.RequestContextHolderUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 
@@ -91,7 +92,7 @@ public class DefaultErrorResult {
         result.setStatus(httpStatus.value());
         result.setError(httpStatus.getReasonPhrase());
         result.setException(e.getClass().getName());
-//        result.setPath(RequestContextHolderUtil.getRequest().getRequestURI());
+        result.setPath(RequestContextHolderUtil.getRequest().getRequestURI());
         result.setTimestamp(new Date());
         return result;
     }

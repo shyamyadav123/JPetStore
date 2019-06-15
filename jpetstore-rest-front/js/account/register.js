@@ -23,11 +23,11 @@ $(document).ready(function () {
                         $('#redirect').attr('href', '../catalog/Main.html');
                         document.getElementById('redirect').click();
                     } else {
-                        $('#newAccountMessage').text(res.msg);
+                        $('#newAccountMessage').text(res.message);
                     }
                 },
                 error: function (res) {
-                    $('#newAccountMessage').text(res.msg);
+                    $('#newAccountMessage').text(res.message);
                 }
             })
         }
@@ -44,12 +44,12 @@ function usernameIsExist() {
             if (res.code == 1) {
                 return false;
             } else {
-                $('#newAccountMessage').text(res.msg);
+                $('#newAccountMessage').text(res.message);
                 return true
             }
         },
         error: function (res) {
-            $('#newAccountMessage').text(res.msg);
+            $('#newAccountMessage').text(res.message);
             return true
         }
     })

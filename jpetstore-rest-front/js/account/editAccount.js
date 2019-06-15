@@ -36,11 +36,11 @@ $(document).ready(function () {
                 if (res.code == 1) {
                     renderPage(res.data)
                 } else {
-                    $('#editAccountMessage').text(res.msg);
+                    $('#editAccountMessage').text(res.message);
                 }
             },
             error: function (res) {
-                $('#editAccountMessage').text(res.msg);
+                $('#editAccountMessage').text(res.message);
             },
             beforeSend: function (request) {
                 request.setRequestHeader('Authorization', getAuthorization());

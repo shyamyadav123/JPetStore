@@ -1,12 +1,10 @@
 package org.csu.jpetstore.common.security;
 
-import org.csu.jpetstore.common.exception.PermissionForbiddenException;
 import org.csu.jpetstore.common.exception.UserNotLoginException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +33,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             return true;
         }
         String authorization = request.getHeader ("authorization");
-        System.err.println(authorization);
+//        System.err.println(authorization);
         // 验证 token
         TokenModel model = tokenManager.getToken (authorization);
         if (tokenManager.checkToken (model)) {
