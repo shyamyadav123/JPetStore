@@ -7,7 +7,6 @@ import org.csu.jpetstore.common.security.Authorization;
 import org.csu.jpetstore.common.validation.groups.CreateGroup;
 import org.csu.jpetstore.domain.Account;
 import org.csu.jpetstore.service.AccountService;
-import org.csu.jpetstore.uitls.RequestContextHolderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;

@@ -30,7 +30,7 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
         ResponseResult responseResultAnn = (ResponseResult) RequestContextHolderUtil.getRequest().getAttribute(ResponseResultInterceptor.RESPONSE_RESULT);
         Class<? extends Result> resultClazz = responseResultAnn.value();
 
-        System.err.println("In Body Write");
+        System.err.println("ResponseBodyAdvice： " + body);
 
         if (resultClazz.isAssignableFrom(PlatformResult.class)) {
             if (body instanceof DefaultErrorResult) {
@@ -43,8 +43,8 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
             } else if (body instanceof String) {
                 return JsonMapper.toJsonString(PlatformResult.success(body));
             }
-            return PlatformResult.success(body);
+            return body;
         }
-        return body;
+        return PlatformResult.success(body);
     }
 }
