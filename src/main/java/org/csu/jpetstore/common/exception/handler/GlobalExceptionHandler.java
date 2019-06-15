@@ -48,12 +48,6 @@ public class GlobalExceptionHandler extends BaseGlobalExceptionHandler {
         return super.handleMethodArgumentNotValidException(e, request);
     }
 
-    @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
-    @ExceptionHandler(MediaTypeNotSupportedStatusException.class)
-    public DefaultErrorResult handleMediaTypeNotSupportedStatusException(MediaTypeNotSupportedStatusException e, HttpServletRequest request) {
-        return super.handleMediaTypeNotSupportedStatusException(e, request);
-    }
-
     /* 处理500类异常 */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(RuntimeException.class)

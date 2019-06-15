@@ -70,14 +70,6 @@ public class BaseGlobalExceptionHandler {
     }
 
     /**
-     * 415错误 不支持的媒体类型
-     */
-    protected DefaultErrorResult handleMediaTypeNotSupportedStatusException(MediaTypeNotSupportedStatusException e, HttpServletRequest request) {
-        log.info("handleMediaTypeNotSupportedStatusException start, uri:{}, caused by: ", request.getRequestURI(), e);
-        return DefaultErrorResult.failure(ResultCode.DATA_MEDIA_NOT_SUPPORT, e, HttpStatus.UNSUPPORTED_MEDIA_TYPE);
-    }
-
-    /**
      * 处理通用自定义业务逻辑异常
      */
     protected ResponseEntity<DefaultErrorResult> handleBusinessException(BusinessException e, HttpServletRequest request) {
