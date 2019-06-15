@@ -21,8 +21,4 @@ public class TokenModel {
     // 随机生成的 uuid
     private String token;
 
-    // 创建的时间
-    private Timestamp timestamp;
-
-
 }

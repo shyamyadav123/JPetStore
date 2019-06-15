@@ -26,14 +26,16 @@ public class RedisTokenManager implements TokenManager {
     @Resource
     private ValueOperations<String, Object> valueOperations;
     @Resource
-    private RedisService redisService;
+    private JwtToken jwtToken;
 
     @Override
     public TokenModel createToken(String userId) {
-        String token = UUID.randomUUID().toString().replace("-", "");
-        TokenModel model = new TokenModel(userId, token, new Timestamp(new Date().getTime()));
+//        String token = UUID.randomUUID().toString().replace("-", "");
+        String token = jwtToken.createToken(userId);
+        TokenModel model = new TokenModel(userId, token);
+        String key = JwtToken.REDIS_JWT_PREFIX + jwtToken.getJwtId(token);
         // 存储到redis并设置过期时间
-        redisTemplate.boundValueOps("user-token:" + userId).set(model, TOKEN_EXPIRE_TIME, TimeUnit.SECONDS);
+        redisTemplate.boundValueOps(key).set(model, TOKEN_EXPIRE_TIME, TimeUnit.SECONDS);
         return model;
     }
 
@@ -42,17 +44,14 @@ public class RedisTokenManager implements TokenManager {
         if (model == null) {
             return false;
         }
-        String key = "user-token:" + model.getUserId();
+        String token = model.getToken();
+        String key = JwtToken.REDIS_JWT_PREFIX + jwtToken.getJwtId(token);
         TokenModel cacheModel = (TokenModel) valueOperations.get(key);
-//        System.err.println(model.getTimestamp().getTime());
-//        System.err.println(cacheModel.getTimestamp().getTime());
-        if (cacheModel == null || !cacheModel.getToken().equals(model.getToken())
-                || model.getTimestamp().getTime() - cacheModel.getTimestamp().getTime() > TOKEN_EXPIRE_TIME * 1000) {
-            return false;
+        if (jwtToken.verifyToken(token, cacheModel.getToken())) {
+            redisTemplate.boundValueOps(key).set(model, TOKEN_EXPIRE_TIME, TimeUnit.SECONDS);
+            return true;
         }
-        // 如果验证成功，说明此用户进行了一次有效操作，延长 token 的过期时间
-        redisTemplate.boundValueOps("user-token:" + model.getUserId()).set(model, TOKEN_EXPIRE_TIME, TimeUnit.SECONDS);
-        return true;
+        return false;
     }
 
     @Override
@@ -67,11 +66,12 @@ public class RedisTokenManager implements TokenManager {
         }
         String userId = param[0];
         String token = param[1];
-        return new TokenModel(userId, token, new Timestamp(new Date().getTime()));
+        return new TokenModel(userId, token);
     }
 
     @Override
-    public void deleteToken(String userId) {
-        redisTemplate.delete("user-token:" + userId);
+    public void deleteToken(String token) {
+        String key = JwtToken.REDIS_JWT_PREFIX + jwtToken.getJwtId(token);
+        redisTemplate.delete(key);
     }
 }
