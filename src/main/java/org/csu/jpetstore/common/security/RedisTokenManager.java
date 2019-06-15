@@ -1,15 +1,11 @@
 package org.csu.jpetstore.common.security;
 
-import org.csu.jpetstore.uitls.RedisService;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,14 +22,14 @@ public class RedisTokenManager implements TokenManager {
     @Resource
     private ValueOperations<String, Object> valueOperations;
     @Resource
-    private JwtToken jwtToken;
+    private Jwt jwt;
 
     @Override
     public TokenModel createToken(String userId) {
 //        String token = UUID.randomUUID().toString().replace("-", "");
-        String token = jwtToken.createToken(userId);
+        String token = jwt.createToken(userId);
         TokenModel model = new TokenModel(userId, token);
-        String key = JwtToken.REDIS_JWT_PREFIX + jwtToken.getJwtId(token);
+        String key = Jwt.REDIS_JWT_PREFIX + jwt.getJwtId(token);
         // 存储到redis并设置过期时间
         redisTemplate.boundValueOps(key).set(model, TOKEN_EXPIRE_TIME, TimeUnit.SECONDS);
         return model;
@@ -45,9 +41,9 @@ public class RedisTokenManager implements TokenManager {
             return false;
         }
         String token = model.getToken();
-        String key = JwtToken.REDIS_JWT_PREFIX + jwtToken.getJwtId(token);
+        String key = Jwt.REDIS_JWT_PREFIX + jwt.getJwtId(token);
         TokenModel cacheModel = (TokenModel) valueOperations.get(key);
-        if (jwtToken.verifyToken(token, cacheModel.getToken())) {
+        if (jwt.verifyToken(token, cacheModel.getToken())) {
             redisTemplate.boundValueOps(key).set(model, TOKEN_EXPIRE_TIME, TimeUnit.SECONDS);
             return true;
         }
@@ -71,7 +67,7 @@ public class RedisTokenManager implements TokenManager {
 
     @Override
     public void deleteToken(String token) {
-        String key = JwtToken.REDIS_JWT_PREFIX + jwtToken.getJwtId(token);
+        String key = Jwt.REDIS_JWT_PREFIX + jwt.getJwtId(token);
         redisTemplate.delete(key);
     }
 }

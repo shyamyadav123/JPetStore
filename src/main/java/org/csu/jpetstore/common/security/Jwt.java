@@ -3,13 +3,10 @@ package org.csu.jpetstore.common.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import org.csu.jpetstore.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.security.SecureRandom;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -19,7 +16,7 @@ import java.util.UUID;
  * @date: 2019/6/15
  */
 @Component
-public class JwtToken {
+public class Jwt {
 
     /**
      * JWT 自定义密钥
