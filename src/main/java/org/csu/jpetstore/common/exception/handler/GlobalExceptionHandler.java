@@ -8,6 +8,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.MediaTypeNotSupportedStatusException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
@@ -45,6 +46,12 @@ public class GlobalExceptionHandler extends BaseGlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public DefaultErrorResult handleBindException(MethodArgumentNotValidException e, HttpServletRequest request) {
         return super.handleMethodArgumentNotValidException(e, request);
+    }
+
+    @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
+    @ExceptionHandler(MediaTypeNotSupportedStatusException.class)
+    public DefaultErrorResult handleMediaTypeNotSupportedStatusException(MediaTypeNotSupportedStatusException e, HttpServletRequest request) {
+        return super.handleMediaTypeNotSupportedStatusException(e, request);
     }
 
     /* 处理500类异常 */

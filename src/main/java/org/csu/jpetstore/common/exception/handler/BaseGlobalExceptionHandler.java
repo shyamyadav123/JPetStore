@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.MediaTypeNotSupportedStatusException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
@@ -67,6 +67,14 @@ public class BaseGlobalExceptionHandler {
         List<ParameterInvalidItem> parameterInvalidItemList =
                 ParameterInvalidItemHelper.convertBindingResultToMapParameterInvalidItemList(e.getBindingResult());
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
+    }
+
+    /**
+     * 415错误 不支持的媒体类型
+     */
+    protected DefaultErrorResult handleMediaTypeNotSupportedStatusException(MediaTypeNotSupportedStatusException e, HttpServletRequest request) {
+        log.info("handleMediaTypeNotSupportedStatusException start, uri:{}, caused by: ", request.getRequestURI(), e);
+        return DefaultErrorResult.failure(ResultCode.DATA_MEDIA_NOT_SUPPORT, e, HttpStatus.UNSUPPORTED_MEDIA_TYPE);
     }
 
     /**
