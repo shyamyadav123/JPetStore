@@ -1,6 +1,7 @@
 package org.csu.jpetstore.controller;
 
 import org.csu.jpetstore.common.exception.BusinessException;
+import org.csu.jpetstore.common.exception.DataConflictException;
 import org.csu.jpetstore.common.result.PlatformResult;
 import org.csu.jpetstore.common.result.ResponseResult;
 import org.csu.jpetstore.common.security.Authorization;
@@ -54,7 +55,7 @@ public class AccountController {
     @ResponseStatus(HttpStatus.CREATED)
     public PlatformResult createAccount(@Validated(CreateGroup.class) @RequestBody Account account) {
         if(accountService.getAccount(account.getUsername()) != null) {
-            throw new BusinessException("Account is exist");
+            throw new DataConflictException("Account is exist");
         }
         account.setFavouriteCategoryId("CATS");
         account.setLanguagePreference("english");

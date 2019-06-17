@@ -4,14 +4,18 @@ import org.csu.jpetstore.uitls.JsonMapper;
 import org.csu.jpetstore.uitls.RequestContextHolderUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import java.util.Map;
+
 /**
  * 接口响应体处理器
+ *
  * @author: sun
  * @date: 2019/6/12
  */
@@ -35,16 +39,27 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
         if (resultClazz.isAssignableFrom(PlatformResult.class)) {
             if (body instanceof DefaultErrorResult) {
                 DefaultErrorResult defaultErrorResult = (DefaultErrorResult) body;
-                return PlatformResult.builder()
-                        .code(defaultErrorResult.getCode())
-                        .message(defaultErrorResult.getMessage())
-                        .data(defaultErrorResult.getErrors())
-                        .build();
+                return transform(defaultErrorResult);
             } else if (body instanceof String) {
                 return JsonMapper.toJsonString(PlatformResult.success(body));
+            } else if (body instanceof Map) {
+                Map error = (Map) body;
+                return PlatformResult.builder()
+                        .code(-1)
+                        .message((String) error.get("message"))
+                        .data(error)
+                        .build();
             }
             return body;
         }
         return PlatformResult.success(body);
+    }
+
+    private PlatformResult transform(DefaultErrorResult defaultErrorResult) {
+        return PlatformResult.builder()
+                .code(defaultErrorResult.getCode())
+                .message(defaultErrorResult.getMessage())
+                .data(defaultErrorResult.getErrors())
+                .build();
     }
 }

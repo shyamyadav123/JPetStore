@@ -27,7 +27,7 @@ public class RedisTest extends BaseTest {
     private RedisTemplate redisTemplate;
 
     @Resource
-    private ValueOperations<String,Object> valueOperations;
+    private ValueOperations<String, Object> valueOperations;
 
     @Autowired
     private HashOperations<String, String, Object> hashOperations;
@@ -45,31 +45,31 @@ public class RedisTest extends BaseTest {
     private RedisService redisService;
 
     @Test
-    public void testObj() throws Exception{
+    public void testObj() throws Exception {
         UserVo userVo = new UserVo();
         userVo.setAddress("上海");
         userVo.setName("测试dfas");
         userVo.setAge(123);
-        ValueOperations<String,Object> operations = redisTemplate.opsForValue();
-        redisService.expireKey("name",20, TimeUnit.SECONDS);
-        String key = RedisKeyUtil.getKey(UserVo.Table,"name",userVo.getName());
+        ValueOperations<String, Object> operations = redisTemplate.opsForValue();
+        redisService.expireKey("name", 20, TimeUnit.SECONDS);
+        String key = RedisKeyUtil.getKey(UserVo.Table, "name", userVo.getName());
         UserVo vo = (UserVo) operations.get(key);
         System.out.println(vo);
     }
 
     @Test
-    public void testValueOption( )throws  Exception{
+    public void testValueOption() throws Exception {
         UserVo userVo = new UserVo();
         userVo.setAddress("上海");
         userVo.setName("jantent");
         userVo.setAge(23);
-        valueOperations.set("test",userVo);
+        valueOperations.set("test", userVo);
 
         System.out.println(valueOperations.get("test"));
     }
 
     @Test
-    public void testSetOperation() throws Exception{
+    public void testSetOperation() throws Exception {
         UserVo userVo = new UserVo();
         userVo.setAddress("北京");
         userVo.setName("jantent");
@@ -78,23 +78,23 @@ public class RedisTest extends BaseTest {
         auserVo.setAddress("n柜昂周");
         auserVo.setName("antent");
         auserVo.setAge(23);
-        setOperations.add("user:test",userVo,auserVo);
+        setOperations.add("user:test", userVo, auserVo);
         Set<Object> result = setOperations.members("user:test");
         System.out.println(result);
     }
 
     @Test
-    public void HashOperations() throws Exception{
+    public void HashOperations() throws Exception {
         UserVo userVo = new UserVo();
         userVo.setAddress("北京");
         userVo.setName("jantent");
         userVo.setAge(23);
-        hashOperations.put("hash:user",userVo.hashCode()+"",userVo);
-        System.out.println(hashOperations.get("hash:user",userVo.hashCode()+""));
+        hashOperations.put("hash:user", userVo.hashCode() + "", userVo);
+        System.out.println(hashOperations.get("hash:user", userVo.hashCode() + ""));
     }
 
     @Test
-    public void  ListOperations() throws Exception{
+    public void ListOperations() throws Exception {
         UserVo userVo = new UserVo();
         userVo.setAddress("北京");
         userVo.setName("jantent");
@@ -109,7 +109,7 @@ public class RedisTest extends BaseTest {
     public void test() {
         String userId = "123";
         String token = UUID.randomUUID().toString().replace("-", "");
-        TokenModel model = new TokenModel(userId, token, new Timestamp(new Date().getTime()));
+        TokenModel model = new TokenModel(userId, token);
         // 存储到redis并设置过期时间
         redisTemplate.boundValueOps("user-token:" + userId).set(model, 7200, TimeUnit.SECONDS);
         System.out.println(valueOperations.get("user-token:" + userId));

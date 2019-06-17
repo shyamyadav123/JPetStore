@@ -14,6 +14,7 @@ import java.util.Date;
 
 /**
  * 默认全局错误返回格式
+ *
  * @author: sun
  * @date: 2019/6/12
  */
@@ -42,7 +43,7 @@ public class DefaultErrorResult {
 
     /**
      * 系统内部自定义的返回值编码，{@link ResultCode} 它是对错误更加详细的编码
-     *
+     * <p>
      * 备注：spring boot默认返回异常时，该字段为null
      */
     private Integer code;
@@ -69,6 +70,7 @@ public class DefaultErrorResult {
 
     /**
      * 设置更详细的错误信息
+     *
      * @param errors
      * @return
      */
@@ -80,6 +82,7 @@ public class DefaultErrorResult {
 
     /**
      * 返回设置错误的结果
+     *
      * @param resultCode
      * @param e
      * @param httpStatus
@@ -99,17 +102,22 @@ public class DefaultErrorResult {
 
     /**
      * 根据自定义业务异常类来返回错误结果
+     *
      * @param e
      * @return
      */
     public static DefaultErrorResult failure(BusinessException e) {
         ExceptionEnum ee = ExceptionEnum.getByEClass(e.getClass());
+        DefaultErrorResult defaultErrorResult = null;
         if (ee != null) {
-            return DefaultErrorResult.failure(ee.getResultCode(), e, ee.getHttpStatus(), e.getData());
+//             DefaultErrorResult.failure(ee.getResultCode(), e, ee.getHttpStatus(), e.getData());
+            defaultErrorResult = DefaultErrorResult.failure(ee.getResultCode(), e, ee.getHttpStatus(), e.getData());
+        } else {
+            //        DefaultErrorResult defaultErrorResult = DefaultErrorResult.failure(e.getResultCode() == null ?
+//                ResultCode.SUCCESS : e.getResultCode(), e, HttpStatus.OK, e.getData());
+            defaultErrorResult = DefaultErrorResult.failure(e.getResultCode() == null ?
+                    ResultCode.PARAM_IS_INVALID : e.getResultCode(), e, HttpStatus.OK, e.getData());
         }
-
-        DefaultErrorResult defaultErrorResult = DefaultErrorResult.failure(e.getResultCode() == null ?
-                ResultCode.SUCCESS : e.getResultCode(), e, HttpStatus.OK, e.getData());
         if (!StringUtils.isEmpty(e.getMessage())) {
             defaultErrorResult.setMessage(e.getMessage());
         }
