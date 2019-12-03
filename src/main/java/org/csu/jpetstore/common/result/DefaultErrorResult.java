@@ -23,49 +23,22 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 public class DefaultErrorResult {
-
     public static final long serialVersionUID = 136400365941306385L;
 
-    /**
-     * Http响应状态码
-     */
     private Integer status;
 
-    /**
-     * Http响应的英文提示
-     */
     private String error;
 
-    /**
-     * 异常原因的精简信息
-     */
     private String message;
 
-    /**
-     * 系统内部自定义的返回值编码，{@link ResultCode} 它是对错误更加详细的编码
-     * <p>
-     * 备注：spring boot默认返回异常时，该字段为null
-     */
     private Integer code;
 
-    /**
-     * 调用接口路径
-     */
     private String path;
 
-    /**
-     * 异常的名字
-     */
     private String exception;
 
-    /**
-     * 异常的错误传递的数据
-     */
     private Object errors;
 
-    /**
-     * 时间戳
-     */
     private Date timestamp;
 
     /**

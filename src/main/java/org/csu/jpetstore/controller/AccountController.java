@@ -43,7 +43,7 @@ public class AccountController {
         }
     }
 
-    @Authorization
+//    @Authorization
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public PlatformResult updateAccount(@PathVariable("id") String id, @RequestBody Account account) {
@@ -62,5 +62,4 @@ public class AccountController {
         accountService.insertAccount(account);
         return PlatformResult.success(accountService.getAccount(account.getUsername()));
     }
-
 }

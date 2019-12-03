@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>QQ号测吉凶</div>
+        <form>
+            <div class="form-item">
+                <label>QQ号</label><input id="qqNum" placeholder="请输入QQ号" />
+                <button id="submitBtn" type="button">开测</button>
+            </div>
+        </form>
+        <div class="result-content">
+            <div>
+                <span>结论：</span>
+                <p id="conclusion"></p>
+            </div>
+            <div>
+                <span>分析：</span>
+                <p id="analysis"></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('submitBtn').click(function () {
+                var qq = $('#qqNum').val()
+                if (qq == undefined || qq == '') {
+                    alert("请输入QQ号码")
+                } else {
+                    $.ajax({
+                        url: "http://localhost:8080/testQQ/" + qq
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (res) {
+                            var data = res.data;
+                            $('#conclusion').html(data.data.conclusion);
+                            $('#analysis').html(data.data.analysis);
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+</html>
