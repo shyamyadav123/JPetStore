@@ -72,7 +72,7 @@
 		</dependency>
 	</dependencies>
 	
-	<distributionManagement>
+	</distributionManagement>
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
@@ -83,7 +83,7 @@
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
 	      <url>http://13.126.44.77:8081/repository/shyam-SNAPSHOT/</url>
 	    </snapshotRepository>
-	</distributionManagement> -->
+	</distributionManagement> 
 
 	<build>
 		<finalName>jpetstore</finalName>
