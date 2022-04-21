@@ -76,12 +76,12 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://52.90.126.79:8081/repository/my-repo/</url>
+	      <url>http://3.87.199.117:8081/repository/my/</url>
 	    </repository>
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://52.90.126.79:8081/repository/my-repo/</url>
+	      <url>http://3.87.199.117:8081/repository/my/</url>
 	    </snapshotRepository>
 	</distributionManagement> 
 	
