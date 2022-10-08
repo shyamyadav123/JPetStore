@@ -76,12 +76,12 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://13.232.159.20:8083/repository/chicken/</url>
+	      <url>http://43.205.217.209:8081/repository/mavenprojrect/</url>
 	    </repository>
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://13.232.159.20:8083/repository/chicken/</url>
+	      <url>http://43.205.217.209:8081/repository/mavenprojrect/</url>
 	    </snapshotRepository>
 	</distributionManagement> 
 	
